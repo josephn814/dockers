@@ -26,5 +26,5 @@ RUN chown oracle:oinstall /home/oracle/start.sh && \
     rm -rf /tmp/*
 
 EXPOSE 1521
-CMD ["/home/oracle/start.sh"]
+
 ENTRYPOINT ["/bin/bash"]
