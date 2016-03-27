@@ -1,4 +1,4 @@
-FROM josedeng/jdk:release-jdk-1.7.0_80
+FROM josedeng/jdk:jdk-1.7.0_80
 
 ENV DEBIAN_FRONTEND noninteractive 
 
