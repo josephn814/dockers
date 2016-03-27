@@ -15,11 +15,13 @@ VOLUME ["/home/developer"]
 
 ENV HOME=/home/developer IDEA_JDK=$JAVA_HOME
 
-RUN wget -q https://download.jetbrains.com/idea/ideaIC-2016.1.tar.gz -O /tmp/ide.tar.gz && \
+RUN wget -q https://download.jetbrains.com/idea/ideaIU-2016.1.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
     rm /tmp/ide.tar.gz
 
 USER developer
 
-ENTRYPOINT ["/opt/ide/bin/idea.sh"]
+ADD start /opt/ide/start
+
+ENTRYPOINT ["/bin/bash"]
