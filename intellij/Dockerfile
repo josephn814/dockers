@@ -23,5 +23,7 @@ RUN wget -q https://download.jetbrains.com/idea/ideaIU-2016.1.tar.gz -O /tmp/ide
 USER developer
 
 ADD start /opt/ide/start
+RUN chown developer:developer /opt/ide/start && \
+    chmod a+x /opt/ide/start
 
 ENTRYPOINT ["/bin/bash"]
