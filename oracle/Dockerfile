@@ -8,11 +8,10 @@ RUN yum install -y wget unzip && \
 ADD wget.sh /tmp/wget.sh
 ADD db_install.rsp /tmp/db_install.rsp
 ADD dbca.rsp /home/oracle/dbca.rsp
-ADD netca.rsp /home/oracle/netca.rsp
-ADD start.sh /home/oracle/start.sh
+ADD General_Purpose.dbc /home/oracle/General_Purpose.dbc
+ADD start.sh /start.sh
 
-RUN chown oracle:oinstall /home/oracle/start.sh && \
-    chmod +x /home/oracle/start.sh && \
+RUN chmod a+x /start.sh && \
     cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
     sed -i 's/\(.*memlock\)/#\1/g' /etc/security/limits.d/oracle-rdbms-server-12cR1-preinstall.conf && \
@@ -26,5 +25,7 @@ RUN chown oracle:oinstall /home/oracle/start.sh && \
     rm -rf /tmp/*
 
 EXPOSE 1521
+USER oracle
+VOLUME ["/opt/oracle/data"]
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/start.sh"]

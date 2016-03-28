@@ -254,7 +254,7 @@ SID = "ORCL"
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-TEMPLATENAME = "General_Purpose.dbc"
+TEMPLATENAME = "/home/oracle/General_Purpose.dbc"
 
 #-----------------------------------------------------------------------------
 # Name          : OBFUSCATEDPASSWORDS
