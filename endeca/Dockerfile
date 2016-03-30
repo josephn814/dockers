@@ -23,7 +23,9 @@ RUN cd /tmp && \
     unzip -q V46002-01.zip && \
     unzip -q V46387-01.zip && \
     unzip -q V46393-01.zip && \
-    chmod +x OCcas11.1.0-Linux64.sh OCmdex6.5.1-Linux64_829811.sh OCplatformservices11.1.0-Linux64.bin && \
+    chmod +x OCcas11.1.0-Linux64.sh && \
+    chmod +x OCmdex6.5.1-Linux64_829811.sh && \
+    chmod +x OCplatformservices11.1.0-Linux64.bin && \
     /bin/bash -c "source /tmp/OCmdex6.5.1-Linux64_829811.sh --silent --target /opt" && \
     /bin/bash -c "source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini" && \
     touch /tmp/platform_silent.txt && \
