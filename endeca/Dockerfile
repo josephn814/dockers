@@ -36,7 +36,7 @@ RUN cd /tmp && \
     echo "Y" >> /tmp/platform_silent.txt && \
     touch /tmp/cas_silent.txt && \
     echo "8500" > /tmp/cas_silent.txt && \
-    echo "8506" > /tmp/cas_silent.txt && \
+    echo "8506" >> /tmp/cas_silent.txt && \
     echo "localhost" >> /tmp/cas_silent.txt && \
     /bin/bash -c "/tmp/OCplatformservices11.1.0-Linux64.bin --silent --target /opt < /tmp/platform_silent.txt" && \
     /bin/bash -c "source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini" && \
