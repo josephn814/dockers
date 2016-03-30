@@ -19,13 +19,13 @@ ADD tools.rsp /tmp/tools.rsp
 
 RUN cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
-    unzip -q V45999-01.zip && \
-    unzip -q V46002-01.zip && \
-    unzip -q V46387-01.zip && \
-    unzip -q V46393-01.zip && \
-    chmod +x OCcas11.1.0-Linux64.sh && \
-    chmod +x OCmdex6.5.1-Linux64_829811.sh && \
-    chmod +x OCplatformservices11.1.0-Linux64.bin && \
+    unzip V45999-01.zip && \
+    unzip V46002-01.zip && \
+    unzip V46387-01.zip && \
+    unzip V46393-01.zip && \
+    chmod +x /tmp/OCcas11.1.0-Linux64.sh && \
+    chmod +x /tmp/OCmdex6.5.1-Linux64_829811.sh && \
+    chmod +x /tmp/OCplatformservices11.1.0-Linux64.bin && \
     /bin/bash -c "source /tmp/OCmdex6.5.1-Linux64_829811.sh --silent --target /opt" && \
     /bin/bash -c "source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini" && \
     touch /tmp/platform_silent.txt && \
