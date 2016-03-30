@@ -20,9 +20,13 @@ ADD tools.rsp /tmp/tools.rsp
 RUN cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
     unzip V45999-01.zip && \
+    rm -f V45999-01.zip && \
     unzip V46002-01.zip && \
+    rm -f V46002-01.zip && \
     unzip V46387-01.zip && \
+    rm -f V46387-01.zip && \
     unzip V46393-01.zip && \
+    rm -f V46393-01.zip && \
     chmod +x /tmp/OCcas11.1.0-Linux64.sh && \
     chmod +x /tmp/OCmdex6.5.1-Linux64_829811.sh && \
     chmod +x /tmp/OCplatformservices11.1.0-Linux64.bin
