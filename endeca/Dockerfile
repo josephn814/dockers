@@ -23,6 +23,7 @@ RUN cd /tmp && \
     rm -f V45999-01.zip && \
     unzip V46002-01.zip && \
     rm -f V46002-01.zip && \
+    rm -f OCpresAPI6.5.1-Linux64_829811.tgz && \
     unzip V46387-01.zip && \
     rm -f V46387-01.zip && \
     unzip V46393-01.zip && \
