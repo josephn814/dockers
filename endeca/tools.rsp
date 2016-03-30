@@ -359,3 +359,5 @@ INSTALL_TYPE="Complete Installation"
 #-------------------------------------------------------------------------------
 
 # PASSWORD_VALIDATION=""
+IGNORE_PREREQ=true
+USE_PREREQ_CHECKER=false
