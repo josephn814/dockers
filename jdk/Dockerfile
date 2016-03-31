@@ -1,7 +1,7 @@
 FROM ubuntu:15.10
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_77
+ENV JAVA_HOME /opt/jdk1.8.0_77
 
 # Install Oracle JDK
 RUN apt-get -q update && \
@@ -14,6 +14,10 @@ RUN apt-get -q update && \
          http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
+    groupadd -g 1000 developer && \
+    useradd -g 1000 -u 1000 -m -s /bin/bash developer && \
+    chown -R developer:deverloper $JAVA_HOME && \
+    apt-get autoremove wget --purge -y && \
     rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/*
 
