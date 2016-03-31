@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get autoremove wget --purge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \    
-    rm -rF /tmp/*
+    rm -rf /tmp/*
 
 USER developer
 VOLUME ["/home/developer"]
