@@ -11,7 +11,7 @@ RUN apt-get update && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
     chmod a+x /opt/ide/daemon && \
-    chmod a+x /opt/ide/start.sh
+    chmod a+x /opt/ide/start.sh && \
     apt-get autoremove wget --purge -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \    
