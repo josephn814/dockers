@@ -14,9 +14,9 @@ RUN apt-get -q update && \
          http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
-    groupadd -g 1000 developer && \
-    useradd -g 1000 -u 1000 -m -s /bin/bash developer && \
-    chown -R developer:deverloper $JAVA_HOME && \
+    groupadd --gid 1000 dev && \
+    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash dev && \
+    chown -R dev:dev $JAVA_HOME && \
     apt-get autoremove wget --purge -y && \
     rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/*
