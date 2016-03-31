@@ -1,7 +1,7 @@
 FROM ubuntu:15.10
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV JAVA_HOME /opt/jdk1.8.0_77
+ENV JAVA_HOME /opt/jdk1.7.0_80
 
 # Install Oracle JDK
 RUN apt-get -q update && \
@@ -11,7 +11,7 @@ RUN apt-get -q update && \
          --no-check-certificate \
          --no-cookies \
          --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz && \
+         http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
     groupadd --gid 1000 developer && \
