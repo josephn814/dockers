@@ -13,20 +13,28 @@ shutdown(){
 
 echo "SPFILE='${ORACLE_BASE}/data/dbs/spfile${ORACLE_SID}.ora'" > ${ORACLE_HOME}/dbs/init${ORACLE_SID}.ora
 
-lsnrctl start
+case "$1" in
+     '')
+         lsnrctl start
 
-if [ ! -d "/opt/oracle/data/oradata" ]; then
-    echo "Creating database"
-    dbca -silent -responseFile /home/oracle/dbca.rsp
-else
-    echo "Database already exists"
-    echo startup\;  | sqlplus / as sysdba
-fi
+         if [ ! -d "/opt/oracle/data/oradata" ]; then
+               echo "Creating database"
+               dbca -silent -responseFile /home/oracle/dbca.rsp
+         else
+               echo "Database already exists"
+               echo startup\;  | sqlplus / as sysdba
+         fi
 
-echo "Database ready to use. Enjoy! ;)"
+         echo "Database ready to use. Enjoy! ;)"
 
-trap 'shutdown' INT TERM
+         trap 'shutdown' INT TERM
 
-while [ "$END" == '' ]; do
-    sleep 1
-done
+         while [ "$END" == '' ]; do
+               sleep 1
+         done
+         ;;
+     *)
+         echo "Database is not configured. Please run '/opt/oracle/start.sh' if needed."
+         $@
+         ;;
+esac
