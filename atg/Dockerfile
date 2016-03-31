@@ -2,6 +2,7 @@ FROM josedeng/jdk:jdk-1.7.0_80
 
 ADD wget.sh /tmp/wget.sh
 ADD installer.properties /tmp/installer.properties
+ADD start.sh /start.sh
 
 RUN apt-get -q update && \
     apt-get -q -y install wget unzip && \
@@ -18,5 +19,5 @@ RUN apt-get -q update && \
 VOLUME ["$JAVA_HOME"]
 VOLUME ["/opt/ATG"]
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/start.sh"]
 
