@@ -12,7 +12,7 @@ RUN apt-get -q update && \
          --no-check-certificate \
          --no-cookies \
          https://www.apache.org/dist/ant/binaries/${ANT_VERSION}-bin.tar.gz && \
-    mkdir -p /opt/ant && \
+    mkdir -p /opt/ant/${ANT_VERSION} && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant/${ANT_VERSION} && \
     rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/* && \
