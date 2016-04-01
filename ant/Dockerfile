@@ -12,8 +12,8 @@ RUN chmod a+x /start.sh && \
          --no-check-certificate \
          --no-cookies \
          https://www.apache.org/dist/ant/binaries/${ANT_VERSION}-bin.tar.gz && \
-    mkdir -p /opt/ant/${ANT_VERSION} && \
-    tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant/${ANT_VERSION} && \
+    mkdir -p /opt/ant/$ANT_VERSION && \
+    tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant/$ANT_VERSION && \
     chown -R developer:developer /opt/ant/$ANT_VERSION && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
