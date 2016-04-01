@@ -10,7 +10,10 @@ RUN apt-get -q update && \
     /bin/bash -c "source wget.sh" && \
     unzip V46005-01.zip && \
     chmod +x OCPlatform11.1.bin && \
+    chmod a+x /start.sh && \
     /bin/bash -c "./OCPlatform11.1.bin -i silent -f installer.properties" && \
+    chown -R developer:developer $JAVA_HOME && \
+    chown -R developer:developer /opt/ATG && \
     apt-get clean && \
     apt-get autoremove wget unzip --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
