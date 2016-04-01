@@ -1,6 +1,6 @@
 FROM josedeng/jdk:jdk-1.7.0_80
 
-ADD start /start.sh
+ADD start.sh /start.sh
 
 RUN chmod a+x /start.sh && \
     apt-get update && \
