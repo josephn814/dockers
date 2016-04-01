@@ -11,7 +11,7 @@ RUN chmod a+x /start.sh && \
         --keep-session-cookies \
         --save-cookies=cookie \
         --load-cookies=cookie \
-        "https://access.cdn.redhat.com/content/origin/files/sha256/16/16ea1e0cef29e94c0d795bbc4b4c431dcb14c4d10831dce5ff48194ff4fb2aee/jboss-eap-6.1.0.zip?_auth_=1459529345_af5b4ae18a0a5c7122731dca9c6ca1f4#\!project=eap" \
+        "https://access.cdn.redhat.com/content/origin/files/sha256/16/16ea1e0cef29e94c0d795bbc4b4c431dcb14c4d10831dce5ff48194ff4fb2aee/jboss-eap-6.1.0.zip?_auth_=1459531364_a65d68bea91a3ed1fa9f19a16485ea8a" \
         -O jboss-eap.zip
 #    apt-get clean && \
 #    apt-get autoremove wget unzip --purge -y && \
