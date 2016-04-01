@@ -24,6 +24,6 @@ RUN chmod a+x /start.sh && \
 
 USER developer
 VOLUME ["$JBOSS_HOME/standalone"]
-EXPOSE [8080 8443 8787]
+EXPOSE [8080 8443]
 
 ENTRYPOINT ["/start.sh"]
