@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 docker run \
-    -d \
     -it \
     --rm \
     -e DISPLAY=$DISPLAY \
