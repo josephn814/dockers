@@ -1,11 +1,11 @@
-FROM josedeng/jdk:jdk-1.8.0_74
+FROM josedeng/jdk:jdk-1.8.0_77
 
-ENV DEBIAN_FRONTEND noninteractive
+ADD start.sh /start.sh
 
 ENV ANT_VERSION apache-ant-1.9.6
 
-# Install Tools
-RUN apt-get -q update && \
+RUN chmod a+x /start.sh && \
+    apt-get -q update && \
     apt-get -q -y install wget && \
     apt-get clean && \
     wget -q -O /tmp/installer.tar.gz \
@@ -14,12 +14,11 @@ RUN apt-get -q update && \
          https://www.apache.org/dist/ant/binaries/${ANT_VERSION}-bin.tar.gz && \
     mkdir -p /opt/ant/${ANT_VERSION} && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant/${ANT_VERSION} && \
-    rm -rf /tmp/* && \
+    chown -R developer:developer /opt/ant/$ANT_VERSION && \
+    apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
-    chown -R root:root /opt/ant
+    rm -rf /tmp/*
 
-# set the environment variables 
-ENV ANT_HOME /opt/ant/${ANT_VERSION}
-ENV PATH=$PATH:$ANT_HOME/bin
+USER developer
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/start.sh"]
