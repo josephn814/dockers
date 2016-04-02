@@ -16,4 +16,4 @@ RUN apt-get update && \
 USER developer
 VOLUME ["/home/developer"]
 
-ENTRYPOINT ["/opt/sqldeveloper/sqldeveloper.sh"] 
+ENTRYPOINT ["/opt/sqldeveloper/sqldeveloper.sh"]
