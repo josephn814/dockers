@@ -51,4 +51,4 @@ docker run \
     -v $WORKSPACES/$PROJECT_NAME/ide:/home/developer \
     -v $WORKSPACES/$PROJECT_NAME:/workspaces \
     $VOLUMES_FROM $LINK $EXPOSE $MOUNT \
-    josedeng/intellij:intellij-2016.1
+    josedeng/intellij:intellij-2016.1.1
