@@ -20,5 +20,6 @@ RUN sed -i 's/\r$//' /start.sh && \
     rm -rf /tmp/*
 
 USER developer
+VOLUME ["/opt/$GRADLE_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
