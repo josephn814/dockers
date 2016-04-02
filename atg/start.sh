@@ -13,7 +13,7 @@ case "$1" in
 		done
 		;;
 	*)
-		echo "ATG container is starting."
+		echo "Container is started."
 		$@
 		;;
 esac
