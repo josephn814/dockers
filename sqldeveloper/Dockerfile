@@ -2,7 +2,8 @@ FROM josedeng/jdk:jdk-1.8.0_77
 
 ADD cookies /tmp/cookies
 
-RUN apt-get update && \
+RUN sed -i 's/\r$//' /tmp/cookies && \
+    apt-get update && \
     apt-get install -y libxi6 libxrender1 libxtst6 libxext6 libfreetype6 wget unzip && \
     cd /tmp && \
     wget --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=/tmp/cookies --save-cookies=/tmp/cookies --keep-session-cookies "http://download.oracle.com/otn/java/sqldeveloper/sqldeveloper-4.1.3.20.78-no-jre.zip" && \

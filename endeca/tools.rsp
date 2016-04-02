@@ -32,7 +32,7 @@ RESPONSEFILE_VERSION=2.2.1.0.0
 #Description: Unix group to be set for the inventory directory. Valid only in Unix platforms.
 #Example: UNIX_GROUP_NAME = "install"
 #-------------------------------------------------------------------------------
-UNIX_GROUP_NAME="endeca"
+UNIX_GROUP_NAME="developer"
 
 #-------------------------------------------------------------------------------
 #Name       : FROM_LOCATION

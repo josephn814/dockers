@@ -1,23 +1,17 @@
 FROM josedeng/jdk:jdk-1.7.0_80
 
-ENV DEBIAN_FRONTEND noninteractive 
+ADD wget.sh /tmp/wget.sh
+ADD tools.rsp /tmp/tools.rsp
 
-# Install Tools
-RUN apt-get update && \
+RUN sed -i 's/\r$//' /tmp/wget.sh && \
+    sed -i 's/\r$//' /tmp/tools.rsp && \
+    apt-get update && \
     apt-get install -y unzip libaio1 && \
     apt-get clean && \
     ln -s /usr/bin/awk /bin/awk && \
     ln -s /usr/bin/basename /bin/basename && \
     ln -s /bin/gzip /usr/bin/gzip && \
-    groupadd --gid 1000 endeca && \
-    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash endeca && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
-
-ADD wget.sh /tmp/wget.sh
-ADD tools.rsp /tmp/tools.rsp
-
-RUN cd /tmp && \
+    cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
     unzip V45999-01.zip && \
     unzip V46002-01.zip && \
@@ -40,10 +34,13 @@ RUN cd /tmp && \
     echo "localhost" >> /tmp/cas_silent.txt && \
     /bin/bash -c "/tmp/OCplatformservices11.1.0-Linux64.bin --silent --target /opt < /tmp/platform_silent.txt" && \
     /bin/bash -c "source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini" && \
-    chown -R endeca:endeca /opt/endeca && \
+    chown -R developer:developer /opt/endeca && \
     su endeca -c  "/tmp/cd/Disk1/install/runInstaller.sh -ignoreSysPrereqs -silent -waitforcompletion -responseFile /tmp/tools.rsp ORACLE_HOME_NAME=ToolsAndFrameworks ORACLE_HOME=/opt/endeca/ToolsAndFrameworks PASSWORD_VALIDATION=admin" && \
     /bin/bash -c "source /home/endeca/oraInventory/orainstRoot.sh" && \
     /bin/bash -c "/tmp/OCcas11.1.0-Linux64.sh --silent --target /opt < /tmp/cas_silent.txt" && \
+    apt-get clean && \
+    apt-get autoremove unzip --purge -y && \
+    rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
 ENTRYPOINT ["/bin/bash"]

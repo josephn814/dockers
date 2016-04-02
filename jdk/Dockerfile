@@ -6,7 +6,6 @@ ENV JAVA_HOME /opt/jdk1.7.0_80
 # Install Oracle JDK
 RUN apt-get -q update && \
     apt-get -q -y install wget && \
-    apt-get clean && \
     wget -q -O /tmp/jdk.tar.gz \
          --no-check-certificate \
          --no-cookies \
@@ -17,9 +16,10 @@ RUN apt-get -q update && \
     groupadd --gid 1000 developer && \
     useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
     chown -R developer:developer $JAVA_HOME && \
+    apt-get clean && \
     apt-get autoremove wget --purge -y && \
-    rm -rf /tmp/* && \
     rm -rf /var/lib/apt/lists/*
+    rm -rf /tmp/* && \
 
 # set the environment variables
 ENV JDK_HOME=$JAVA_HOME PATH=$PATH:$JAVA_HOME/bin LANG=C.UTF-8

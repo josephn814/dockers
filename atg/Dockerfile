@@ -4,7 +4,10 @@ ADD wget.sh /tmp/wget.sh
 ADD installer.properties /tmp/installer.properties
 ADD start.sh /start.sh
 
-RUN apt-get -q update && \
+RUN sed -i 's/\r$//' /tmp/wget.sh && \
+    sed -i 's/\r$//' /start.sh && \
+    sed -i 's/\r$//' /tmp/installer.properties && \
+    apt-get -q update && \
     apt-get -q -y install wget unzip && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \

@@ -4,7 +4,8 @@ ADD start.sh /start.sh
 
 ENV JBOSS_HOME /opt/jboss-eap-6.1
 
-RUN chmod a+x /start.sh && \
+RUN sed -i 's/\r$//' /start.sh && \
+    chmod a+x /start.sh && \
     apt-get update && \
     apt-get install wget unzip -y && \
     cd /tmp && \
