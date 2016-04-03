@@ -11,7 +11,7 @@ RUN sed -i 's/\r$//' /start.sh && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \
-         https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.xz && \
+         https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.gz && \
     mkdir -p /opt/node-$NODEJS_VERSION && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/node-$NODEJS_VERSION && \
     groupadd --gid 1000 developer && \
