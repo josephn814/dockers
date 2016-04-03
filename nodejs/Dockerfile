@@ -14,13 +14,15 @@ RUN sed -i 's/\r$//' /start.sh && \
          https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.xz && \
     mkdir -p /opt/node-$NODEJS_VERSION && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/node-$NODEJS_VERSION && \
+    groupadd --gid 1000 developer && \
+    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
     chown -R developer:developer /opt/node-$NODEJS_VERSION&& \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-USER developer
+#USER developer
 VOLUME ["/opt/node-$NODEJS_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
