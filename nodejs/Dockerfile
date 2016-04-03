@@ -8,7 +8,7 @@ RUN sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
     apt-get -q -y install wget && \
-    wget -q -O /tmp/installer.tar.gz \
+    wget -q -O /tmp/installer.tar.xz \
          --no-check-certificate \
          --no-cookies \
          https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.xz && \
