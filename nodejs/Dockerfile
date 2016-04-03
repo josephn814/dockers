@@ -22,7 +22,8 @@ RUN sed -i 's/\r$//' /start.sh && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-#USER developer
+USER developer
+VOLUME ["/home/developer"]
 VOLUME ["/opt/node-$NODEJS_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
