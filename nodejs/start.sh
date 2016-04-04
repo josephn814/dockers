@@ -11,7 +11,7 @@ case "$1" in
     '')
 		trap 'shutdown' INT TERM
 
-        $NODE_HOME/bin/node --help
+        $NODE_HOME/bin/node --version
 
 		while [ "$END" == '' ]; do
 			sleep 1
