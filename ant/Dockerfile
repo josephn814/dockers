@@ -21,5 +21,6 @@ RUN sed -i 's/\r$//' /start.sh && \
     rm -rf /tmp/*
 
 USER developer
+VOLUME ["/opt/ant/$ANT_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
