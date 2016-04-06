@@ -24,14 +24,14 @@
       <InitParams>
          <initParam name="db_name" value=""/>
          <initParam name="dispatchers" value="(PROTOCOL=TCP) (SERVICE={SID}XDB)"/>
-         <initParam name="audit_file_dest" value="{ORACLE_BASE}/data/admin/{DB_UNIQUE_NAME}/adump"/>
+         <initParam name="audit_file_dest" value="/home/oracle/data/admin/{DB_UNIQUE_NAME}/adump"/>
          <initParam name="compatible" value="12.1.0.2.0"/>
          <initParam name="remote_login_passwordfile" value="EXCLUSIVE"/>
          <initParam name="processes" value="300"/>
          <initParam name="undo_tablespace" value="UNDOTBS1"/>
-         <initParam name="control_files" value="(&quot;{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/control01.ctl&quot;, &quot;{ORACLE_BASE}/data/fast_recovery_area/{DB_UNIQUE_NAME}/control02.ctl&quot;)"/>
-         <initParam name="diagnostic_dest" value="{ORACLE_BASE}/data"/>
-         <initParam name="db_recovery_file_dest" value="{ORACLE_BASE}/data/fast_recovery_area"/>
+         <initParam name="control_files" value="(&quot;/home/oracle/data/oradata/{DB_UNIQUE_NAME}/control01.ctl&quot;, &quot;/home/oracle/data/fast_recovery_area/{DB_UNIQUE_NAME}/control02.ctl&quot;)"/>
+         <initParam name="diagnostic_dest" value="/home/oracle/data"/>
+         <initParam name="db_recovery_file_dest" value="/home/oracle/data/fast_recovery_area"/>
          <initParam name="audit_trail" value="db"/>
          <initParam name="memory_target" value="250" unit="MB"/>
          <initParam name="db_block_size" value="8" unit="KB"/>
@@ -44,21 +44,21 @@
          <percentageMemTOSGA>40</percentageMemTOSGA>
          <customSGA>false</customSGA>
          <archiveLogMode>false</archiveLogMode>
-         <initParamFileName>{ORACLE_BASE}/data/admin/{DB_UNIQUE_NAME}/pfile/init.ora</initParamFileName>
+         <initParamFileName>/home/oracle/data/admin/{DB_UNIQUE_NAME}/pfile/init.ora</initParamFileName>
       </MiscParams>
-      <SPfile useSPFile="true">{ORACLE_BASE}/data/dbs/spfile{SID}.ora</SPfile>
+      <SPfile useSPFile="true">/home/oracle/data/dbs/spfile{SID}.ora</SPfile>
    </InitParamAttributes>
    <StorageAttributes>
       <DataFiles>
          <Location>{ORACLE_HOME}/assistants/dbca/templates/Seed_Database.dfb</Location>
          <SourceDBName cdb="true">seeddata</SourceDBName>
-         <Name id="3" Tablespace="SYSAUX" Contents="PERMANENT" Size="560" autoextend="true" blocksize="8192" con_id="1">{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/sysaux01.dbf</Name>
-         <Name id="1" Tablespace="SYSTEM" Contents="PERMANENT" Size="780" autoextend="true" blocksize="8192" con_id="1">{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/system01.dbf</Name>
-         <Name id="4" Tablespace="UNDOTBS1" Contents="UNDO" Size="25" autoextend="true" blocksize="8192" con_id="1">{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/undotbs01.dbf</Name>
-         <Name id="6" Tablespace="USERS" Contents="PERMANENT" Size="5" autoextend="true" blocksize="8192" con_id="1">{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/users01.dbf</Name>
+         <Name id="3" Tablespace="SYSAUX" Contents="PERMANENT" Size="560" autoextend="true" blocksize="8192" con_id="1">/home/oracle/data/oradata/{DB_UNIQUE_NAME}/sysaux01.dbf</Name>
+         <Name id="1" Tablespace="SYSTEM" Contents="PERMANENT" Size="780" autoextend="true" blocksize="8192" con_id="1">/home/oracle/data/oradata/{DB_UNIQUE_NAME}/system01.dbf</Name>
+         <Name id="4" Tablespace="UNDOTBS1" Contents="UNDO" Size="25" autoextend="true" blocksize="8192" con_id="1">/home/oracle/data/oradata/{DB_UNIQUE_NAME}/undotbs01.dbf</Name>
+         <Name id="6" Tablespace="USERS" Contents="PERMANENT" Size="5" autoextend="true" blocksize="8192" con_id="1">/home/oracle/data/oradata/{DB_UNIQUE_NAME}/users01.dbf</Name>
       </DataFiles>
       <TempFiles>
-         <Name id="1" Tablespace="TEMP" Contents="TEMPORARY" Size="60" con_id="1">{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/temp01.dbf</Name>
+         <Name id="1" Tablespace="TEMP" Contents="TEMPORARY" Size="60" con_id="1">/home/oracle/data/oradata/{DB_UNIQUE_NAME}/temp01.dbf</Name>
       </TempFiles>
       <ControlfileAttributes id="Controlfile">
          <maxDatafiles>100</maxDatafiles>
@@ -66,26 +66,26 @@
          <maxLogMembers>3</maxLogMembers>
          <maxLogHistory>1</maxLogHistory>
          <maxInstances>8</maxInstances>
-         <image name="control01.ctl" filepath="{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/"/>
-         <image name="control02.ctl" filepath="{ORACLE_BASE}/data/fast_recovery_area/{DB_UNIQUE_NAME}/"/>
+         <image name="control01.ctl" filepath="/home/oracle/data/oradata/{DB_UNIQUE_NAME}/"/>
+         <image name="control02.ctl" filepath="/home/oracle/data/fast_recovery_area/{DB_UNIQUE_NAME}/"/>
       </ControlfileAttributes>
       <RedoLogGroupAttributes id="1">
          <reuse>false</reuse>
          <fileSize unit="KB">51200</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo01.log" filepath="{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/"/>
+         <member ordinal="0" memberName="redo01.log" filepath="/home/oracle/data/oradata/{DB_UNIQUE_NAME}/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="2">
          <reuse>false</reuse>
          <fileSize unit="KB">51200</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo02.log" filepath="{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/"/>
+         <member ordinal="0" memberName="redo02.log" filepath="/home/oracle/data/oradata/{DB_UNIQUE_NAME}/"/>
       </RedoLogGroupAttributes>
       <RedoLogGroupAttributes id="3">
          <reuse>false</reuse>
          <fileSize unit="KB">51200</fileSize>
          <Thread>1</Thread>
-         <member ordinal="0" memberName="redo03.log" filepath="{ORACLE_BASE}/data/oradata/{DB_UNIQUE_NAME}/"/>
+         <member ordinal="0" memberName="redo03.log" filepath="/home/oracle/data/oradata/{DB_UNIQUE_NAME}/"/>
       </RedoLogGroupAttributes>
    </StorageAttributes>
 </DatabaseTemplate>
