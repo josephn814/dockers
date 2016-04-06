@@ -7,10 +7,10 @@ shutdown(){
 	END=1
 }
 
-trap 'shutdown' INT TERM
-
 case "$1" in
     '')
+        trap 'shutdown' INT TERM
+
         $NODE_HOME/bin/node --version
 
 		while [ "$END" == '' ]; do
