@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NODE_HOME=/opt/node-v5.10.0 ; export NODE_HOME
+NODE_HOME=/opt/node-v5.10.1 ; export NODE_HOME
 PATH=$NODE_HOME/bin:$PATH ; export PATH
 
 shutdown(){
