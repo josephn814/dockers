@@ -13,7 +13,7 @@ case "$1" in
 		done
 		;;
 	*)
-		echo "Container is started."
+		echo "Container is starting......."
 		$@
 		;;
 esac
