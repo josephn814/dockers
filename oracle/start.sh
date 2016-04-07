@@ -20,7 +20,6 @@ lsnrctl start
 if [ ! -d "${ORACLE_DATA_HOME}/oradata" ]; then
     echo "***** Creating database *****"
     dbca -silent -responseFile /home/oracle/dbca.rsp
-    cat /opt/oracle/cfgtoollogs/dbca/ORCL.log
 else
     echo "***** Database already exists *****"
     echo startup\;  | sqlplus / as sysdba

@@ -19,7 +19,9 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     /bin/bash -c "source /tmp/wget.sh" && \
     sed -i 's/\(.*memlock\)/#\1/g' /etc/security/limits.d/oracle-rdbms-server-12cR1-preinstall.conf && \
     mkdir -p /opt/oracle && \
+    mkdir -p /opt/oracle/data && \
     chown -R oracle:oinstall /opt/oracle && \
+    chown -R oracle:oinstall /opt/oracle/data && \
     chmod -R 755 /opt/oracle && \
     su oracle -c "cd /tmp; unzip -q V46095-01_1of2.zip && unzip -q V46095-01_2of2.zip" && \
     su oracle -c "cd /tmp/database; ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -ignorePrereq -responseFile /tmp/db_install.rsp" && \
@@ -30,6 +32,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     rm -rf /tmp/*
 
 EXPOSE 1521
+USER oracle
 VOLUME ["/opt/oracle/data"]
 
 ENTRYPOINT ["/start.sh"]
