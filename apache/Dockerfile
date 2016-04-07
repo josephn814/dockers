@@ -11,14 +11,14 @@ RUN sed -i 's/\r$//' /start.sh && \
          --no-cookies \
          http://www.apache.org/dist/httpd/httpd-2.4.18.tar.gz && \
     wget -q -O /tmp/installer1.tar.gz \
-             --no-check-certificate \
-             --no-cookies \
-             http://www.apache.org/dist/httpd/httpd-2.4.18-deps.tar.gz && \
+         --no-check-certificate \
+         --no-cookies \
+         http://www.apache.org/dist/httpd/httpd-2.4.18-deps.tar.gz && \
     mkdir -p /opt/apache && \
     mkdir -p /tmp/apache && \
-    mkdir -p /tmp/apr && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /tmp/apache/ && \
     tar -xzf /tmp/installer1.tar.gz --strip-components=2 -C /tmp/apache/srclib && \
+    cd /tmp/apache/ && \
     /bin/bash -c "./configure --prefix=/opt/apache --with-included-apr" && \
     make && \
     make install && \
