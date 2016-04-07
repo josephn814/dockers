@@ -11,6 +11,7 @@ RUN sed -i 's/\r$//' /start.sh && \
          --no-cookies \
          http://www.apache.org/dist/httpd/httpd-2.4.18.tar.gz && \
     mkdir -p /opt/apache && \
+    mkdir -p /tmp/apache && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /tmp/apache/ && \
     cd /tmp/apache && \
     /bin/bash -c "./configure --prefix=/opt/apache" && \
