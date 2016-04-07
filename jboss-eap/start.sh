@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ ! -v $JAVA_HOME ]; then
+if [ "x$JAVA_HOME" = "x" ]; then
     JAVA_HOME=/opt/jdk1.7.0_80
 fi
 export JAVA_HOME

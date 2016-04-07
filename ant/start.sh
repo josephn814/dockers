@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ANT_VERSION=apache-ant-1.9.6 ; export ANT_VERSION
-if [ ! -v $JAVA_HOME ]; then
+if [ "x$JAVA_HOME" = "x" ]; then
     JAVA_HOME=/opt/jdk1.8.0_77
 fi
 export JAVA_HOME
