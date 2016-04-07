@@ -25,7 +25,7 @@ RUN sed -i 's/\r$//' /start.sh && \
     groupadd --gid 1000 developer && \
     useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
     chown -R developer:developer /opt/apache && \
-    sudo usermod -a -G sudo developer && \
+    echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \

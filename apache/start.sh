@@ -4,7 +4,7 @@ HTTPD_HOME=/opt/apache ; export HTTPD_HOME
 PATH=$HTTPD_HOME/bin:$PATH ; export PATH
 
 shutdown(){
-    $HTTPD_HOME/bin/apachectl stop
+    sudo apachectl stop
 	END=1
 }
 
@@ -12,7 +12,7 @@ case "$1" in
     '')
         trap 'shutdown' INT TERM
 
-        $HTTPD_HOME/bin/apachectl start
+        sudo apachectl start
 
         while [ "$END" == '' ]; do
 			sleep 1
