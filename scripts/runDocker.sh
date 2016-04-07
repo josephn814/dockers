@@ -70,7 +70,7 @@ case $1 in
         ;;
     *)
         _PREFIX="$1"
-        if [ "$2" = "-debug" ]; then
+        if [ "$3" = "-debug" ]; then
             echo "Prefix is ${_PREFIX}"
         fi
 
@@ -116,17 +116,23 @@ case $1 in
 
         _ALIAS="${_PREFIX^^}_ALIAS"
         if [ "x${!_ALIAS}" != "x" ]; then
-            ALIAS="--name $!_ALIAS"
+            ALIAS="--name ${!_ALIAS}"
         fi
 
         _COMMANDS="${_PREFIX^^}_COMMANDS"
         _EXTEND_COMMANDS="${_PREFIX^^}_EXTEND_COMMANDS"
 
+        if [ "x$2" != "x" ]; then
+            _EXTEND_COMMANDS="$2"
+        else
+            _EXTEND_COMMANDS="${!_EXTEND_COMMANDS}"
+        fi
+
         _FINAL_COMMANDS="run --rm ${!_COMMANDS} \
             ${VOLUMES_FROM} ${LINK} ${EXPOSE} ${MOUNT} ${ALIAS} \
-            ${!_CONTAINER} ${!_EXTEND_COMMANDS}"
+            ${!_CONTAINER} ${_EXTEND_COMMANDS}"
 
-        if [ "$2" = "-debug" ]; then
+        if [ "$3" = "-debug" ]; then
             echo "Running : "
             echo "${_FINAL_COMMANDS}"
             echo

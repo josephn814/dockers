@@ -31,6 +31,6 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
 
 EXPOSE 1521
 USER oracle
-VOLUME ["/home/oracle/data"]
+VOLUME ["/tmp/oracle/data"]
 
 ENTRYPOINT ["/start.sh"]
