@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-HTTPD_HOME=opt/ant/$ANT_VERSION ; export HTTPD_HOME
+HTTPD_HOME=/opt/apache ; export HTTPD_HOME
 PATH=$HTTPD_HOME/bin:$PATH ; export PATH
 
 shutdown(){
@@ -11,7 +11,7 @@ case "$1" in
     '')
         trap 'shutdown' INT TERM
 
-        $HTTPD_HOME/bin/httpd -h
+        $HTTPD_HOME/bin/httpd
 
         while [ "$END" == '' ]; do
 			sleep 1
