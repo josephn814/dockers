@@ -18,28 +18,28 @@ RUN sed -i 's/\r$//' /start.sh && \
     mkdir -p /tmp/apache && \
     mkdir -p /tmp/apr && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /tmp/apache/ && \
-    tar -xzf /tmp/installer1.tar.gz --strip-components=1 -C /tmp/apr/ && \
-    cd /tmp/apr/srclib/apr && \
-        /bin/bash -c "./configure" && \
-        make && \
-        make install && \
-    cd /tmp/apr/srclib/apr-util && \
-        /bin/bash -c "./configure" && \
-        make && \
-        make install && \
-    cd /tmp/apache && \
-    /bin/bash -c "./configure --prefix=/opt/apache" && \
-    make && \
-    make install && \
-    groupadd --gid 1000 developer && \
-    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
-    chown -R developer:developer /opt/apache && \
-    apt-get clean && \
-    apt-get autoremove wget --purge -y && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
+    tar -xzf /tmp/installer1.tar.gz --strip-components=1 -C /tmp/apr/ #&& \
+#    cd /tmp/apr/srclib/apr && \
+#        /bin/bash -c "./configure -Wl,-rpath -Wl,LIBDIR" && \
+#        make && \
+#        make install  && \
+#    cd /tmp/apr/srclib/apr-util && \
+#        /bin/bash -c "./configure" && \
+#        make && \
+#        make install && \
+#    cd /tmp/apache && \
+#    /bin/bash -c "./configure --prefix=/opt/apache" && \
+#    make && \
+#    make install && \
+#    groupadd --gid 1000 developer && \
+#    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
+#    chown -R developer:developer /opt/apache && \
+#    apt-get clean && \
+#    apt-get autoremove wget --purge -y && \
+#    rm -rf /var/lib/apt/lists/* && \
+#    rm -rf /tmp/*
 
-USER developer
+#USER developer
 VOLUME ["/opt/apache/conf"]
 VOLUME ["/opt/apache/htdocs"]
 EXPOSE 80
