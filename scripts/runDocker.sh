@@ -23,26 +23,33 @@ case $1 in
             echo "DEPENDENCIES is nothing."
             exit -1
         fi
+
         for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
             DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
             _DOCKER_ALIAS="${DOCKER_ALIAS//\./_}"
             _DOCKER_COMMANDS="${_DOCKER_ALIAS^^}_COMMANDS"
             if [ "x${!_DOCKER_COMMANDS}" != "x" ]; then
-            DOCKER_COMMANDS="${!_DOCKER_COMMANDS}"
+                DOCKER_COMMANDS="${!_DOCKER_COMMANDS}"
+            else
+                DOCKER_COMMANDS=
             fi
-                        _DOCKER_EXTEND_COMMANDS="${_DOCKER_ALIAS^^}_EXTEND_COMMANDS"
+            _DOCKER_EXTEND_COMMANDS="${_DOCKER_ALIAS^^}_EXTEND_COMMANDS"
             if [ "x${!_DOCKER_EXTEND_COMMANDS}" != "x" ]; then
-                        DOCKER_EXTEND_COMMANDS="${!_DOCKER_EXTEND_COMMANDS}"
+                DOCKER_EXTEND_COMMANDS="${!_DOCKER_EXTEND_COMMANDS}"
+            else
+                DOCKER_EXTEND_COMMANDS=
             fi
             if [ -n $PREFIX ]; then
                 DOCKER_ALIAS="${PREFIX}_${DOCKER_ALIAS}"
             fi
+            echo " " > $PWD/${DOCKER_ALIAS}.out
             while [ "x$(docker ps -a | grep "$DOCKER_ALIAS")" != "x" ]; do
                 docker stop $DOCKER_ALIAS > /dev/null 2>&1
                 docker rm -v $DOCKER_ALIAS > /dev/null 2>&1
             done
             echo "Creating $DOCKER_ALIAS container."
-            nohup docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS > $PWD/env.out 2>&1 &
+            echo "docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS"
+            nohup docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS >> $PWD/${DOCKER_ALIAS}.out 2>&1 &
         done
 
         shutdown(){
