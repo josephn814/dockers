@@ -8,19 +8,19 @@ RUN sed -i 's/\r$//' /start.sh && \
     apt-get -q update && \
     apt-get -q -y install wget libaio1 && \
     wget --user-agent="Mozilla/5.0" \
-        --no-check-certificate \
-        --load-cookies=/tmp/cookies \
-        --save-cookies=/tmp/cookies \
-        --keep-session-cookies \
-        -O /tmp/installer.tar.gz
-        http://download.oracle.com/otn/linux/instantclient/121020/instantclient-basic-linux.x64-12.1.0.2.0.zip && \
+         --no-check-certificate \
+         --load-cookies=/tmp/cookies \
+         --save-cookies=/tmp/cookies \
+         --keep-session-cookies \
+         -O /tmp/installer.tar.gz \
+         http://download.oracle.com/otn/linux/instantclient/121020/instantclient-basic-linux.x64-12.1.0.2.0.zip && \
     wget --user-agent="Mozilla/5.0" \
-        --no-check-certificate \
-        --load-cookies=/tmp/cookies \
-        --save-cookies=/tmp/cookies \
-        --keep-session-cookies \
-        -O /tmp/installer1.tar.gz
-        http://download.oracle.com/otn/linux/instantclient/121020/instantclient-sqlplus-linux.x64-12.1.0.2.0.zip && \
+         --no-check-certificate \
+         --load-cookies=/tmp/cookies \
+         --save-cookies=/tmp/cookies \
+         --keep-session-cookies \
+         -O /tmp/installer1.tar.gz \
+         http://download.oracle.com/otn/linux/instantclient/121020/instantclient-sqlplus-linux.x64-12.1.0.2.0.zip && \
     mkdir -p /opt/sqlplus && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/sqlplus && \
     tar -xzf /tmp/installer1.tar.gz --strip-components=1 -C /opt/sqlplus && \
