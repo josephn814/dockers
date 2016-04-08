@@ -24,20 +24,21 @@ RUN sed -i 's/\r$//' /start.sh && \
     mkdir -p /opt/sqlplus && \
     cd /tmp && \
     unzip /tmp/installer.zip && \
-    unzip /tmp/installer1.zip #&& \
-#    cd /opt/sqlplus && \
-#    ln -s libclntshcore.so.12.1 libclntshcore.so && \
-#    ln -s libclntsh.so.12.1 libclntsh.so && \
-#    ln -s libocci.so.12.1 libocci.so && \
-#    groupadd --gid 1000 developer && \
-#    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
-#    chown -R developer:developer /opt/sqlplus && \
-#    apt-get clean && \
-#    apt-get autoremove wget unzip --purge -y && \
-#    rm -rf /var/lib/apt/lists/* && \
-#    rm -rf /tmp/*
+    unzip /tmp/installer1.zip && \
+    mv /tmp/instantclient_12_1/* /opt/sqlplus && \
+    cd /opt/sqlplus && \
+    ln -s libclntshcore.so.12.1 libclntshcore.so && \
+    ln -s libclntsh.so.12.1 libclntsh.so && \
+    ln -s libocci.so.12.1 libocci.so && \
+    groupadd --gid 1000 developer && \
+    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
+    chown -R developer:developer /opt/sqlplus && \
+    apt-get clean && \
+    apt-get autoremove wget unzip --purge -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
-#USER developer
-#VOLUME ["/opt/sqlplus"]
+USER developer
+VOLUME ["/opt/sqlplus"]
 
 ENTRYPOINT ["/start.sh"]
