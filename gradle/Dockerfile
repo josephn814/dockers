@@ -7,7 +7,7 @@ ENV GRADLE_VERSION gradle-2.12
 RUN sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget unzip && \
+    apt-get -q -y install wget unzip libaio1 && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \

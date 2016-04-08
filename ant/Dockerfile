@@ -7,7 +7,7 @@ ENV ANT_VERSION apache-ant-1.9.6
 RUN sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget && \
+    apt-get -q -y install wget libaio1 && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \
