@@ -7,20 +7,17 @@ ENV GRADLE_VERSION gradle-2.12
 RUN sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget unzip libaio1 sudo && \
+    apt-get -q -y install wget unzip libaio1 && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \
          https://services.gradle.org/distributions/$GRADLE_VERSION-bin.zip && \
     unzip /tmp/installer.tar.gz -d /opt && \
-    chown -R developer:developer /opt/$GRADLE_VERSION && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     apt-get clean && \
     apt-get autoremove wget unzip --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-USER developer
 VOLUME ["/opt/$GRADLE_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
