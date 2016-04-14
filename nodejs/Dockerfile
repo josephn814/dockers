@@ -2,7 +2,7 @@ FROM ubuntu:15.10
 
 ADD start.sh /start.sh
 
-ENV NODEJS_VERSION v5.10.1
+ENV NODEJS_VERSION v4.4.3
 
 RUN sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
