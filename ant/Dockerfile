@@ -14,11 +14,13 @@ RUN sed -i 's/\r$//' /start.sh && \
          https://www.apache.org/dist/ant/binaries/${ANT_VERSION}-bin.tar.gz && \
     mkdir -p /opt/ant/$ANT_VERSION && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant/$ANT_VERSION && \
+    chown -R developer:developer /opt/ant/$ANT_VERSION && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
+USER developer
 VOLUME ["/opt/ant/$ANT_VERSION"]
 
 ENTRYPOINT ["/start.sh"]

@@ -13,11 +13,13 @@ RUN sed -i 's/\r$//' /start.sh && \
          --no-cookies \
          https://services.gradle.org/distributions/$GRADLE_VERSION-bin.zip && \
     unzip /tmp/installer.tar.gz -d /opt && \
+    chown -R developer:developer /opt/$GRADLE_VERSION && \
     apt-get clean && \
     apt-get autoremove wget unzip --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
+USER developer
 VOLUME ["/opt/$GRADLE_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
