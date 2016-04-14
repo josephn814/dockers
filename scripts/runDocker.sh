@@ -47,8 +47,12 @@ case $1 in
                 docker stop $DOCKER_ALIAS > /dev/null 2>&1
                 docker rm -v $DOCKER_ALIAS > /dev/null 2>&1
             done
+            echo
             echo "Creating $DOCKER_ALIAS container."
+            echo "*********************************"
             echo "docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS"
+            echo "*********************************"
+            echo
             nohup docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS >> $PWD/${DOCKER_ALIAS}.out 2>&1 &
         done
 
