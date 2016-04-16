@@ -33,7 +33,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
 
 EXPOSE 1521
 USER oracle
-VOLUME ["/opt/oracle/admin/ORCL/dpdump"]
+VOLUME ["/opt/oracle/product/12.1.0/dbhome_1/rdbms/log"]
 VOLUME ["/opt/oracle/data"]
 
 ENTRYPOINT ["/start.sh"]
