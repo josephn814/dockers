@@ -5,7 +5,6 @@ DB_HOME=$ORACLE_BASE/product/12.1.0/dbhome_1; export DB_HOME
 ORACLE_HOME=$DB_HOME; export ORACLE_HOME
 ORACLE_SID=ORCL; export ORACLE_SID
 ORACLE_DATA_HOME=/opt/oracle/data ; export ORACLE_DATA_HOME
-DATA_PUMP_DIR=/opt/oracle/data/dump; export DATA_PUMP_DIR
 PATH=$ORACLE_HOME/bin:$PATH; export PATH
 
 shutdown(){
