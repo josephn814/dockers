@@ -11,15 +11,15 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     apt-get -q -y install wget unzip && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
-    unzip V46005-01.zip && \
+    mv V46005-01.zip /installer/installer.zip && \
     chmod a+x /start.sh && \
-    mv OCPlatform11.1.bin /installer/OCPlatform11.1.bin && \
     chmod 755 -R /installer && \
     mkdir -p /opt/ATG && \
     chown -R developer:developer $JAVA_HOME && \
     chown -R developer:developer /opt/ATG && \
+    chown -R developer:developer /installer && \
     apt-get clean && \
-    apt-get autoremove wget unzip --purge -y && \
+    apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
