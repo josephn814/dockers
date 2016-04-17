@@ -3,7 +3,7 @@
 DIRECTORY=/opt/ATG
 if [ "`ls -A $DIRECTORY`" = "" ]; then
     echo "Installing ATG."
-    unzip /installer/V46005-01.zip -d /installer
+    unzip /installer/installer.zip -d /installer
     chmod +x /installer/OCPlatform11.1.bin
     /installer/OCPlatform11.1.bin -i silent -f /installer/installer.properties
 else
