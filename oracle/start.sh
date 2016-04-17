@@ -18,7 +18,7 @@ shutdown(){
 echo "SPFILE='${ORACLE_DATA_HOME}/dbs/spfile${ORACLE_SID}.ora'" > ${ORACLE_HOME}/dbs/init${ORACLE_SID}.ora
 if [ ! -d $DPUMPDIR ]; then
     mkdir -p $DPUMPDIR
-if
+fi
 
 lsnrctl start
 if [ ! -d "${ORACLE_DATA_HOME}/oradata" ]; then
