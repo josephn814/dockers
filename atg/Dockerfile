@@ -1,7 +1,7 @@
 FROM josedeng/jdk:jdk-1.7.0_80
 
 ADD wget.sh /tmp/wget.sh
-ADD installer.properties /tmp/installer.properties
+ADD installer.properties /installer/installer.properties
 ADD start.sh /start.sh
 
 RUN sed -i 's/\r$//' /tmp/wget.sh && \
@@ -12,9 +12,9 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
     unzip V46005-01.zip && \
-    chmod +x OCPlatform11.1.bin && \
     chmod a+x /start.sh && \
-    /bin/bash -c "./OCPlatform11.1.bin -i silent -f installer.properties" && \
+    mv OCPlatform11.1.bin /installer/OCPlatform11.1.bin && \
+    chmod 755 -R /installer && \
     chown -R developer:developer $JAVA_HOME && \
     chown -R developer:developer /opt/ATG && \
     apt-get clean && \
