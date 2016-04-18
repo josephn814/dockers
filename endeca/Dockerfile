@@ -8,7 +8,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /tmp/tools.rsp && \
     sed -i 's/\r$//' /start.sh && \
     apt-get update && \
-    apt-get install -y unzip libaio1 && \
+    apt-get install -y wget unzip libaio1 && \
     apt-get clean && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
@@ -19,7 +19,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     mv V46393-01.zip /installer/V46393-01.zip && \
     chmod a+x -R /installer && \
     apt-get clean && \
-    apt-get autoremove --purge -y && \
+    apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
