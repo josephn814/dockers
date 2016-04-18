@@ -7,6 +7,7 @@ ADD start.sh /start.sh
 RUN sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /installer/tools.rsp && \
     sed -i 's/\r$//' /start.sh && \
+    chmod a+x /start.sh && \
     apt-get update && \
     apt-get install -y wget unzip libaio1 && \
     apt-get clean && \
