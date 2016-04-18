@@ -13,15 +13,15 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /home/oracle/General_Purpose.dbc && \
     sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
-    yum install -y wget unzip && \
+    yum install -y wget unzip sudo && \
     yum install -y oracle-rdbms-server-12cR1-preinstall && \
     cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
+    echo "oracle ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     sed -i 's/\(.*memlock\)/#\1/g' /etc/security/limits.d/oracle-rdbms-server-12cR1-preinstall.conf && \
     mkdir -p /opt/oracle && \
     mkdir -p /opt/oracle/data && \
     chown -R oracle:oinstall /opt/oracle && \
-    chown -R oracle:oinstall /opt/oracle/data && \
     chmod -R 755 /opt/oracle && \
     su oracle -c "cd /tmp; unzip -q V46095-01_1of2.zip && unzip -q V46095-01_2of2.zip" && \
     su oracle -c "cd /tmp/database; ./runInstaller -silent -waitforcompletion -ignoreSysPrereqs -ignorePrereq -responseFile /tmp/db_install.rsp" && \

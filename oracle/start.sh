@@ -18,6 +18,7 @@ echo "SPFILE='${ORACLE_DATA_HOME}/dbs/spfile${ORACLE_SID}.ora'" > ${ORACLE_HOME}
 lsnrctl start
 if [ ! -d "${ORACLE_DATA_HOME}/oradata" ]; then
     echo "***** Creating database *****"
+    sudo chown -R oracle:oinstall ${ORACLE_DATA_HOME}
     dbca -silent -responseFile /home/oracle/dbca.rsp
 else
     echo "***** Database already exists *****"
