@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+ln -s /usr/bin/awk /bin/awk
+ln -s /usr/bin/basename /bin/basename
+ln -s /bin/gzip /usr/bin/gzip
 
 ENDECA_MDEX_ROOT=/opt/endeca/MDEX/6.5.1 ; export ENDECA_MDEX_ROOT
 PATH=$ENDECA_MDEX_ROOT/bin:$PATH ; export PATH

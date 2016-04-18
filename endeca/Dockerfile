@@ -10,9 +10,6 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     apt-get update && \
     apt-get install -y unzip libaio1 && \
     apt-get clean && \
-    ln -s /usr/bin/awk /bin/awk && \
-    ln -s /usr/bin/basename /bin/basename && \
-    ln -s /bin/gzip /usr/bin/gzip && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
     mkdir -p /installer && \
