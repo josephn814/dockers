@@ -13,12 +13,12 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     ln -s /usr/bin/awk /bin/awk && \
     ln -s /usr/bin/basename /bin/basename && \
     ln -s /bin/gzip /usr/bin/gzip && \
-    cd /tmp && \
-    /bin/bash -c "source /tmp/wget.sh" && \
     apt-get clean && \
     apt-get autoremove --purge -y && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
+    rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp && \
+    /bin/bash -c "source /tmp/wget.sh"
 
 VOLUME ["/opt/endeca"]
 EXPOSE 8006 8888
