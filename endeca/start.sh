@@ -35,11 +35,12 @@ else
     echo "Endeca has been installed."
     source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini
     source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini
-    ENDECA_TOOLS_ROOT=/opt/endeca/ToolsAndFrameworks/11.1.0 ; export ENDECA_TOOLS_ROOT
-    ENDECA_TOOLS_CONF=$ENDECA_TOOLS_ROOT/server/workspace ; export ENDECA_TOOLS_CONF
 fi
 
 sed -i '/ENDECA_TOOLS_CONF=/d' /opt/endeca/ToolsAndFrameworks/11.1.0/server/bin/workbench.sh
+ENDECA_ROOT=/opt/endeca/PlatformServices/11.1.0 ; export ENDECA_ROOT
+ENDECA_TOOLS_ROOT=/opt/endeca/ToolsAndFrameworks/11.1.0 ; export ENDECA_TOOLS_ROOT
+ENDECA_TOOLS_CONF=$ENDECA_TOOLS_ROOT/server/workspace ; export ENDECA_TOOLS_CONF
 
 su developer -c "$ENDECA_ROOT/tools/server/bin/startup.sh"
 su developer -c "$ENDECA_TOOLS_ROOT/server/bin/startup.sh"
