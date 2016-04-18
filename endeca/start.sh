@@ -18,10 +18,10 @@ sed -i '/ENDECA_TOOLS_CONF=/d' /opt/endeca/ToolsAndFrameworks/11.1.0/server/bin/
 
 if [ "`ls -A /opt/endeca`" = "" ]; then
     echo "Installing Endeca workspaces."
-    unzip -q /tmp/V45999-01.zip -d /tmp
-    unzip -q /tmp/V46002-01.zip -d /tmp
-    unzip -q /tmp/V46387-01.zip -d /tmp
-    unzip -q /tmp/V46393-01.zip -d /tmp
+    unzip -q /installer/V45999-01.zip -d /tmp
+    unzip -q /installer/V46002-01.zip -d /tmp
+    unzip -q /installer/V46387-01.zip -d /tmp
+    unzip -q /installer/V46393-01.zip -d /tmp
     chmod +x /tmp/OCcas11.1.0-Linux64.sh
     chmod +x /tmp/OCmdex6.5.1-Linux64_829811.sh
     chmod +x /tmp/OCplatformservices11.1.0-Linux64.bin

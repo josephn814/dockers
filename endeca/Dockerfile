@@ -14,10 +14,17 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     ln -s /usr/bin/basename /bin/basename && \
     ln -s /bin/gzip /usr/bin/gzip && \
     cd /tmp && \
-    /bin/bash -c "source /tmp/wget.sh" && \
+    /bin/bash -c "source wget.sh" && \
+    mkdir -p /installer && \
+    mv V45999-01.zip /installer/V45999-01.zip && \
+    mv V46002-01.zip /installer/V46002-01.zip && \
+    mv V46387-01.zip /installer/V46387-01.zip && \
+    mv V46393-01.zip /installer/V46393-01.zip && \
+    chmod a+x -R /installer && \
     apt-get clean && \
     apt-get autoremove --purge -y && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
 
 VOLUME ["/opt/endeca"]
 EXPOSE 8006 8888
