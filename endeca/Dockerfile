@@ -1,7 +1,7 @@
 FROM josedeng/jdk:jdk-1.7.0_80
 
 ADD wget.sh /tmp/wget.sh
-ADD tools.rsp /tmp/tools.rsp
+ADD tools.rsp /installer/tools.rsp
 ADD start.sh /start.sh
 
 RUN sed -i 's/\r$//' /tmp/wget.sh && \
@@ -24,4 +24,4 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
 
 VOLUME ["/opt/endeca"]
 EXPOSE 8006 8888
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/start.sh"]
