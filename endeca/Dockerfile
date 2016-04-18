@@ -5,14 +5,13 @@ ADD tools.rsp /tmp/tools.rsp
 ADD start.sh /start.sh
 
 RUN sed -i 's/\r$//' /tmp/wget.sh && \
-    sed -i 's/\r$//' /tmp/tools.rsp && \
+    sed -i 's/\r$//' /installer/tools.rsp && \
     sed -i 's/\r$//' /start.sh && \
     apt-get update && \
     apt-get install -y wget unzip libaio1 && \
     apt-get clean && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
-    mkdir -p /installer && \
     mv V45999-01.zip /installer/V45999-01.zip && \
     mv V46002-01.zip /installer/V46002-01.zip && \
     mv V46387-01.zip /installer/V46387-01.zip && \
