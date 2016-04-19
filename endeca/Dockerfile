@@ -13,10 +13,10 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     apt-get clean && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \
-    mv V45999-01.zip /installer/V45999-01.zip && \
-    mv V46002-01.zip /installer/V46002-01.zip && \
-    mv V46387-01.zip /installer/V46387-01.zip && \
-    mv V46393-01.zip /installer/V46393-01.zip && \
+    mv V45999-01.zip /installer/platform.zip && \
+    mv V46002-01.zip /installer/mdex.zip && \
+    mv V46387-01.zip /installer/tools.zip && \
+    mv V46393-01.zip /installer/cas.zip && \
     chmod a+x -R /installer && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
@@ -24,5 +24,5 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     rm -rf /tmp/*
 
 VOLUME ["/opt/endeca"]
-EXPOSE 8006 8888
+EXPOSE 8006 8888 8500
 ENTRYPOINT ["/start.sh"]

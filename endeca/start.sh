@@ -5,10 +5,10 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     ln -s /usr/bin/awk /bin/awk
     ln -s /usr/bin/basename /bin/basename
     ln -s /bin/gzip /usr/bin/gzip
-    unzip -q /installer/V45999-01.zip -d /tmp
-    unzip -q /installer/V46002-01.zip -d /tmp
-    unzip -q /installer/V46387-01.zip -d /tmp
-    unzip -q /installer/V46393-01.zip -d /tmp
+    unzip -q /installer/platform.zip -d /tmp
+    unzip -q /installer/mdex.zip -d /tmp
+    unzip -q /installer/tools.zip -d /tmp
+    unzip -q /installer/cas.zip -d /tmp
     chmod +x /tmp/OCcas11.1.0-Linux64.sh
     chmod +x /tmp/OCmdex6.5.1-Linux64_829811.sh
     chmod +x /tmp/OCplatformservices11.1.0-Linux64.bin
