@@ -5,6 +5,7 @@ DB_HOME=$ORACLE_BASE/product/12.1.0/dbhome_1; export DB_HOME
 ORACLE_HOME=$DB_HOME; export ORACLE_HOME
 ORACLE_SID=ORCL; export ORACLE_SID
 ORACLE_DATA_HOME=/opt/oracle/data ; export ORACLE_DATA_HOME
+DUMPFILE_DIR=$ORACLE_BASE/admin/ORCL/dpdump
 PATH=$ORACLE_HOME/bin:$PATH; export PATH
 
 shutdown(){
@@ -23,6 +24,9 @@ if [ ! -d "${ORACLE_DATA_HOME}/oradata" ]; then
 else
     echo "***** Database already exists *****"
     echo startup\;  | sqlplus / as sysdba
+fi
+if [ ! -d "$DUMPFILE_DIR" ]; then
+    mkdir -p ${DUMPFILE_DIR}
 fi
 echo "***** Database ready to use. Enjoy! ;) *****"
 echo
