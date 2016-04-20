@@ -125,7 +125,10 @@ case $1 in
 
         _ALIAS="${_PREFIX^^}_ALIAS"
         if [ "x${!_ALIAS}" != "x" ]; then
-            ALIAS="--name ${!_ALIAS}"
+            if [ -n $PREFIX ]; then
+                _ALIAS="${PREFIX}_${!_ALIAS}"
+            fi
+            ALIAS="--name ${_ALIAS}"
         fi
 
         _COMMANDS="${_PREFIX^^}_COMMANDS"
