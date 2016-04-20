@@ -9,7 +9,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /start.sh && \
     chmod a+x /start.sh && \
     apt-get update && \
-    apt-get install -y wget unzip libaio1 && \
+    apt-get install -y wget unzip libaio1 dos2unix && \
     apt-get clean && \
     cd /tmp && \
     /bin/bash -c "source wget.sh" && \

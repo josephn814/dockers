@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "127.0.0.1 endeca" >> /etc/hosts
+
 if [ "`ls -A /opt/endeca`" = "" ]; then
     echo "Installing Endeca workspaces."
     ln -s /usr/bin/awk /bin/awk
@@ -23,7 +25,7 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     touch /tmp/cas_silent.txt
     echo "8500" > /tmp/cas_silent.txt
     echo "8506" >> /tmp/cas_silent.txt
-    echo "localhost" >> /tmp/cas_silent.txt
+    echo "endeca" >> /tmp/cas_silent.txt
     /tmp/OCplatformservices11.1.0-Linux64.bin --silent --target /opt < /tmp/platform_silent.txt
     source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini
     chown -R developer:developer /opt/endeca
