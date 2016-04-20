@@ -25,7 +25,6 @@ RUN sed -i 's/\r$//' /start.sh && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-USER developer
 VOLUME ["$JBOSS_HOME"]
 EXPOSE 8080 8443 8787
 

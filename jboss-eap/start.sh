@@ -17,10 +17,10 @@ rm -rf $JBOSS_HOME/standalone/tmp/*
 
 case "$1" in
     '')
-        $JBOSS_HOME/bin/standalone.sh -h
+        su developer -c "$JBOSS_HOME/bin/standalone.sh -h"
 		;;
 	*)
 		echo "Container is starting......."
-		$JBOSS_HOME/bin/standalone.sh $@
+		su developer -c "$JBOSS_HOME/bin/standalone.sh $@"
 		;;
 esac
