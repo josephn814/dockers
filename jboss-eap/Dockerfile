@@ -15,7 +15,7 @@ RUN sed -i 's/\r$//' /start.sh && \
         --keep-session-cookies \
         --save-cookies=cookie \
         --load-cookies=cookie \
-        "https://access.cdn.redhat.com/content/origin/files/sha256/16/16ea1e0cef29e94c0d795bbc4b4c431dcb14c4d10831dce5ff48194ff4fb2aee/jboss-eap-6.1.0.zip?_auth_=1461161368_1e60f7058af8035bff8a8a0a32acbcac" \
+        "https://access.cdn.redhat.com/content/origin/files/sha256/16/16ea1e0cef29e94c0d795bbc4b4c431dcb14c4d10831dce5ff48194ff4fb2aee/jboss-eap-6.1.0.zip?_auth_=1461162189_40f38a4138920183d290e8104c5a524e" \
         -O /installer/jboss-eap.zip && \
     mkdir -p $JBOSS_HOME && \
     chown -R developer:developer /installer && \
