@@ -7,6 +7,11 @@ export JAVA_HOME
 JBOSS_HOME=/opt/jboss-eap-6.1 ; export JBOSS_HOME
 PATH=$JAVA_HOME/bin:$JBOSS_HOME/bin:$PATH ; export PATH
 
+if [ "`ls -A $JBOSS_HOME`" = "" ]; then
+    unzip /installer/jboss-eap.zip -d /opt
+    chown -R developer:developer $JBOSS_HOME
+fi
+
 rm -rf $JBOSS_HOME/standalone/data/*
 rm -rf $JBOSS_HOME/standalone/tmp/*
 
