@@ -14,13 +14,16 @@ fi
 
 rm -rf $JBOSS_HOME/standalone/data/*
 rm -rf $JBOSS_HOME/standalone/tmp/*
+rm -rf $JBOSS_HOME/standalone/log/*
 
 case "$1" in
     '')
         su developer -c "$JBOSS_HOME/bin/standalone.sh -h"
 		;;
 	*)
+		COMMANDS="$JBOSS_HOME/bin/standalone.sh $@"
+		echo "Execute command : $COMMANDS"
 		echo "Container is starting......."
-		su developer -c "$JBOSS_HOME/bin/standalone.sh $@"
+		su developer -c "$COMMANDS"
 		;;
 esac
