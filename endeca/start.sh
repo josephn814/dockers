@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+rm -f /bin/sh.distrib
+ln -s bash /bin/sh.distrib
+rm -f /bin/sh
+ln -s bash /bin/sh
+
 if [ "`ls -A /opt/endeca`" = "" ]; then
     echo "Installing Endeca workspaces."
     ln -s /usr/bin/awk /bin/awk
@@ -27,10 +32,12 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     /tmp/OCplatformservices11.1.0-Linux64.bin --silent --target /opt < /tmp/platform_silent.txt
     source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini
     chown -R developer:developer /opt/endeca
+	sed -i "s/host=$(hostname)/host=localhost/g" /opt/endeca/PlatformServices/workspace/conf/eaccmd.properties
     su developer -c  "/tmp/cd/Disk1/install/runInstaller.sh -ignoreSysPrereqs -silent -waitforcompletion -responseFile /installer/tools.rsp ORACLE_HOME_NAME=ToolsAndFrameworks ORACLE_HOME=/opt/endeca/ToolsAndFrameworks PASSWORD_VALIDATION=admin"
     source /home/developer/oraInventory/orainstRoot.sh
     /tmp/OCcas11.1.0-Linux64.sh --silent --target /opt < /tmp/cas_silent.txt
     chown -R developer:developer /opt/endeca
+	sed -i "s/com.endeca.itl.cas.server.host=$(hostname)/com.endeca.itl.cas.server.host=localhost/g" /opt/endeca/CAS/workspace/conf/commandline.properties
 else
     echo "Endeca has been installed."
     source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini
