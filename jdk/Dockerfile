@@ -1,6 +1,6 @@
 FROM josedeng/ubuntu:ubuntu-15.10
 
-ENV JAVA_HOME /opt/jdk1.7.0_80
+ENV JAVA_HOME /opt/jdk1.8.0_92
 ENV JDK_HOME=$JAVA_HOME PATH=$PATH:$JAVA_HOME/bin LANG=C.UTF-8
 
 RUN apt-get -q update && \
@@ -9,7 +9,7 @@ RUN apt-get -q update && \
          --no-check-certificate \
          --no-cookies \
          --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz && \
+         http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
     chown -R developer:developer $JAVA_HOME && \
