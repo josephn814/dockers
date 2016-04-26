@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-rm -f /bin/sh.distrib
-ln -s bash /bin/sh.distrib
-rm -f /bin/sh
-ln -s bash /bin/sh
-
 if [ "`ls -A /opt/endeca`" = "" ]; then
     echo "Installing Endeca workspaces."
     ln -s /usr/bin/awk /bin/awk
@@ -38,13 +33,13 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     /tmp/OCcas11.1.0-Linux64.sh --silent --target /opt < /tmp/cas_silent.txt
     chown -R developer:developer /opt/endeca
 	sed -i "s/com.endeca.itl.cas.server.host=$(hostname)/com.endeca.itl.cas.server.host=localhost/g" /opt/endeca/CAS/workspace/conf/commandline.properties
+	sed -i '/ENDECA_TOOLS_CONF=/d' /opt/endeca/ToolsAndFrameworks/11.1.0/server/bin/workbench.sh
 else
     echo "Endeca has been installed."
     source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini
     source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini
 fi
 
-sed -i '/ENDECA_TOOLS_CONF=/d' /opt/endeca/ToolsAndFrameworks/11.1.0/server/bin/workbench.sh
 ENDECA_ROOT=/opt/endeca/PlatformServices/11.1.0 ; export ENDECA_ROOT
 ENDECA_TOOLS_ROOT=/opt/endeca/ToolsAndFrameworks/11.1.0 ; export ENDECA_TOOLS_ROOT
 ENDECA_TOOLS_CONF=$ENDECA_TOOLS_ROOT/server/workspace ; export ENDECA_TOOLS_CONF
@@ -63,7 +58,7 @@ trap 'shutdown' INT TERM
 
 case "$1" in
     '')
-        echo "Container has been started."
+        echo "Container Started."
 		while [ "$END" == '' ]; do
 			sleep 1
 		done

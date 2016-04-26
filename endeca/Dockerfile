@@ -4,19 +4,17 @@ ADD wget.sh /tmp/wget.sh
 ADD tools.rsp /installer/tools.rsp
 ADD start.sh /start.sh
 
-RUN sed -i 's/\r$//' /tmp/wget.sh && \
-    sed -i 's/\r$//' /installer/tools.rsp && \
-    sed -i 's/\r$//' /start.sh && \
+RUN dos2unix /tmp/wget.sh && \
+    dos2unix /installer/tools.rsp && \
+    dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get update && \
-    apt-get install -y wget unzip libaio1 dos2unix && \
-    apt-get clean && \
-    cd /tmp && \
-    /bin/bash -c "source wget.sh" && \
-    mv V45999-01.zip /installer/platform.zip && \
-    mv V46002-01.zip /installer/mdex.zip && \
-    mv V46387-01.zip /installer/tools.zip && \
-    mv V46393-01.zip /installer/cas.zip && \
+    apt-get install -y wget unzip libaio1 && \
+    source /tmp/wget.sh && \
+    mv /tmp/V45999-01.zip /installer/platform.zip && \
+    mv /tmp/V46002-01.zip /installer/mdex.zip && \
+    mv /tmp/V46387-01.zip /installer/tools.zip && \
+    mv /tmp/V46393-01.zip /installer/cas.zip && \
     chmod a+x -R /installer && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
@@ -24,5 +22,5 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     rm -rf /tmp/*
 
 VOLUME ["/opt/endeca"]
-EXPOSE 8006 8888 8500
+EXPOSE 8006 8888 8500 15000-16999
 ENTRYPOINT ["/start.sh"]
