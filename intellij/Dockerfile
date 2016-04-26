@@ -1,11 +1,11 @@
-FROM josedeng/jdk:jdk-1.8.0_77
+FROM josedeng/jdk:jdk-1.8.0_92
 
 ENV IDEA_JDK=$JAVA_HOME
 
 ADD daemon /daemon
 ADD start.sh /start.sh
 
-RUN sed -i 's/\r$//' /start.sh && \
+RUN dos2unix /start.sh && \
     chmod a+x /daemon && \
     chmod a+x /start.sh && \
     apt-get update && \
