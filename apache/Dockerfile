@@ -1,11 +1,11 @@
-FROM ubuntu:15.10
+FROM josedeng/ubuntu:ubuntu-15.10
 
 ADD start.sh /start.sh
 
-RUN sed -i 's/\r$//' /start.sh && \
+RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget build-essential libpcre++-dev sudo && \
+    apt-get -q -y install wget build-essential libpcre++-dev && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \
@@ -22,10 +22,7 @@ RUN sed -i 's/\r$//' /start.sh && \
     /bin/bash -c "./configure --prefix=/opt/apache --with-included-apr" && \
     make && \
     make install && \
-    groupadd --gid 1000 developer && \
-    useradd --gid 1000 --uid 1000 --create-home --shell /bin/bash developer && \
     chown -R developer:developer /opt/apache && \
-    echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \

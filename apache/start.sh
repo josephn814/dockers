@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-HTTPD_HOME=/opt/apache ; export HTTPD_HOME
-PATH=$HTTPD_HOME/bin:$PATH ; export PATH
+APACHE_HOME=/opt/apache ; export APACHE_HOME
+PATH=$APACHE_HOME/bin:$PATH ; export PATH
 
 shutdown(){
-    sudo $HTTPD_HOME/bin/apachectl stop
+    sudo $APACHE_HOME/bin/apachectl stop
 	END=1
 }
 
 case "$1" in
     '')
         trap 'shutdown' INT TERM
-
-        sudo $HTTPD_HOME/bin/apachectl start
+        echo "Container Started."
+        sudo $APACHE_HOME/bin/apachectl start
 
         while [ "$END" == '' ]; do
 			sleep 1

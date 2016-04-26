@@ -2,7 +2,7 @@ FROM josedeng/jdk:jdk-1.8.0_92
 
 ADD start.sh /start.sh
 
-ENV ANT_VERSION apache-ant-1.9.6
+ENV ANT_VERSION apache-ant-1.9.7
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
