@@ -1,4 +1,4 @@
-FROM josedeng/jdk:jdk-1.8.0_77
+FROM josedeng/jdk:jdk-1.8.0_92
 
 ADD cookies /tmp/cookies
 
