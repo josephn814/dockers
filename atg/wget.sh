@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Generated onTue Apr 26 01:33:08 PDT 2016# Start of user configurable variables
+# Generated onTue Apr 26 01:38:11 PDT 2016# Start of user configurable variables
 #
 LANG=C
 export LANG
@@ -52,5 +52,5 @@ rm -f sso.out
 
 
 
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46005-01.zip&token=RWJiRHFQbFIwQmNqalhOVVRxV1p5ZyE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzE5MzY0NzkmYXJ1PTE3ODA3NzcwJmFncmVlbWVudElkPTEzOTUxNDMmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTQxNjExMyZtZWRpYUNpZD0yMjI2OTQmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V46005-01.zip >> $LOGFILE 2>&1 
+  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V78217-01.zip&token=dGh4MVJsNGZJRFQrWXBnUTV3a0htQSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9ODI4NTM1NjImYXJ1PTE5NDI1NDk2JmFncmVlbWVudElkPTEzOTUxNTkmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU0MDM4MiZtZWRpYUNpZD00NjIzMTcmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V78217-01.zip >> $LOGFILE 2>&1 
 
