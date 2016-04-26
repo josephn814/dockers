@@ -2,7 +2,7 @@ FROM josedeng/jdk:jdk-1.8.0_77
 
 ADD cookies /tmp/cookies
 
-RUN sed -i 's/\r$//' /tmp/cookies && \
+RUN dos2unix /tmp/cookies && \
     apt-get update && \
     apt-get install -y libxi6 libxrender1 libxtst6 libxext6 libfreetype6 wget unzip && \
     cd /tmp && \

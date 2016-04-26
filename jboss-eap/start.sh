@@ -16,6 +16,8 @@ rm -rf $JBOSS_HOME/standalone/data/*
 rm -rf $JBOSS_HOME/standalone/tmp/*
 rm -rf $JBOSS_HOME/standalone/log/*
 
+/extend.sh
+
 case "$1" in
     '')
         su developer -c "$JBOSS_HOME/bin/standalone.sh -h"
