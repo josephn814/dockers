@@ -9,9 +9,8 @@ RUN dos2unix /tmp/wget.sh && \
     dos2unix /installer/installer.properties && \
     apt-get -q update && \
     apt-get -q -y install wget unzip && \
-    cd /tmp && \
-    source wget.sh && \
-    mv V46005-01.zip /installer/installer.zip && \
+    source /tmp/wget.sh && \
+    mv /tmp/V46005-01.zip /installer/installer.zip && \
     chmod a+x /start.sh && \
     chmod 755 -R /installer && \
     mkdir -p /opt/ATG && \
