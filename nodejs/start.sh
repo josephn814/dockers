@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NODE_HOME=/opt/node-v5.10.1 ; export NODE_HOME
+NODE_HOME=/opt/node-v4.4.3 ; export NODE_HOME
 PATH=$NODE_HOME/bin:$PATH ; export PATH
 
 shutdown(){
@@ -9,7 +9,12 @@ shutdown(){
 
 case "$1" in
     '')
+        trap 'shutdown' INT TERM
+        echo "Container Started."
         $NODE_HOME/bin/node --version
+        while [ "$END" == '' ]; do
+            sleep 1
+        done
 		;;
 	*)
 		echo "Container is starting."
@@ -17,8 +22,3 @@ case "$1" in
 		;;
 esac
 
-trap 'shutdown' INT TERM
-
-while [ "$END" == '' ]; do
-    sleep 1
-done
