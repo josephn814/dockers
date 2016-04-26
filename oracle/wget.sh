@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Generated onMon Apr 18 19:36:09 PDT 2016# Start of user configurable variables
+# Generated onTue Apr 26 03:18:44 PDT 2016# Start of user configurable variables
 #
 LANG=C
 export LANG
@@ -52,9 +52,9 @@ rm -f sso.out
 
 
 
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46095-01_1of2.zip&token=RE1mUzNDMC9mS2RValNhNG9QU0hpQSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzIxNjI4ODEmYXJ1PTE3ODQxNzUxJmFncmVlbWVudElkPTEzNTkxMzAmc29mdHdhcmVDaWRzPTE3NDIxMSZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU1MTk1NSZtZWRpYUNpZD0yMjkzNjMmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V46095-01_1of2.zip >> $LOGFILE 2>&1 
+  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46095-01_1of2.zip&token=dit3OUJOaXRDMkFzOHRyelgrQ3VkQSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzIxNjI4ODEmYXJ1PTE3ODQxNzUxJmFncmVlbWVudElkPTEzOTU3MzImc29mdHdhcmVDaWRzPTE3NDIxMSZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU1MTk1NSZtZWRpYUNpZD0yMjkzNjMmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V46095-01_1of2.zip >> $LOGFILE 2>&1 
 
 
 
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46095-01_2of2.zip&token=NWNlVGszbVpXQTFHb3RVcU9WK0lQZyE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzIxNjI4OTEmYXJ1PTE3ODQxNzUxJmFncmVlbWVudElkPTEzNTkxMzAmc29mdHdhcmVDaWRzPTE3NDIxMSZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU1MTk1NSZtZWRpYUNpZD0yMjkzNjMmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V46095-01_2of2.zip >> $LOGFILE 2>&1 
+  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46095-01_2of2.zip&token=YlJMU2Vya2RKR0xFZGZZdHh6eGdTUSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzIxNjI4OTEmYXJ1PTE3ODQxNzUxJmFncmVlbWVudElkPTEzOTU3MzImc29mdHdhcmVDaWRzPTE3NDIxMSZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU1MTk1NSZtZWRpYUNpZD0yMjkzNjMmcmVsZWFzZUNpZD0" -O $OUTPUT_DIR/V46095-01_2of2.zip >> $LOGFILE 2>&1 
 

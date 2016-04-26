@@ -35,6 +35,7 @@ trap 'shutdown' INT TERM
 
 case "$1" in
     '')
+        echo "Container Started."
         while [ "$END" == '' ]; do
             sleep 1
         done
