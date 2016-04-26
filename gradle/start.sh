@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-GRADLE_HOME=/opt/gradle-2.12 ; export GRADLE_HOME
+GRADLE_HOME=/opt/gradle-2.13 ; export GRADLE_HOME
 if [ "x$JAVA_HOME" = "x" ]; then
-    JAVA_HOME=/opt/jdk1.8.0_77
+    JAVA_HOME=/opt/jdk1.8.0_92
 fi
 export JAVA_HOME
 PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$PATH ; export PATH
@@ -14,7 +14,7 @@ shutdown(){
 case "$1" in
     '')
 		trap 'shutdown' INT TERM
-
+        echo "Container Started."
         $GRADLE_HOME/bin/gradle --version
 
 		while [ "$END" == '' ]; do
