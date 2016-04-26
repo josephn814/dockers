@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 DIRECTORY=/opt/ATG
+
 if [ "`ls -A $DIRECTORY`" = "" ]; then
     echo "Installing ATG."
     unzip /installer/installer.zip -d /installer

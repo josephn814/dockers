@@ -4,13 +4,13 @@ ADD wget.sh /tmp/wget.sh
 ADD installer.properties /installer/installer.properties
 ADD start.sh /start.sh
 
-RUN sed -i 's/\r$//' /tmp/wget.sh && \
-    sed -i 's/\r$//' /start.sh && \
-    sed -i 's/\r$//' /installer/installer.properties && \
+RUN dos2unix /tmp/wget.sh && \
+    dos2unix /start.sh && \
+    dos2unix /installer/installer.properties && \
     apt-get -q update && \
     apt-get -q -y install wget unzip && \
     cd /tmp && \
-    /bin/bash -c "source wget.sh" && \
+    source wget.sh && \
     mv V46005-01.zip /installer/installer.zip && \
     chmod a+x /start.sh && \
     chmod 755 -R /installer && \
