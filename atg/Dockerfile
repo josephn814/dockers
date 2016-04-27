@@ -10,7 +10,7 @@ RUN dos2unix /tmp/wget.sh && \
     apt-get -q update && \
     apt-get -q -y install wget unzip && \
     source /tmp/wget.sh && \
-    mv /tmp/V78217-01.zip /installer/installer.zip && \
+    mv /tmp/V46005-01.zip /installer/installer.zip && \
     chmod a+x /start.sh && \
     chmod 755 -R /installer && \
     mkdir -p /opt/ATG && \
