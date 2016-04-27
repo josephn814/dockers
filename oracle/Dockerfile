@@ -18,6 +18,7 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
     echo "oracle ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    sed -i 's/Defaults    requiretty.*/ #Defaults    requiretty/g' /etc/sudoers
     sed -i 's/\(.*memlock\)/#\1/g' /etc/security/limits.d/oracle-rdbms-server-12cR1-preinstall.conf && \
     mkdir -p /opt/oracle && \
     mkdir -p /opt/oracle/data && \
