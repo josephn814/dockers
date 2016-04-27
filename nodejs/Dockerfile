@@ -23,7 +23,6 @@ RUN dos2unix /start.sh && \
     rm -rf /tmp/*
 
 USER developer
-VOLUME ["/home/developer"]
 VOLUME ["/opt/node-$NODEJS_VERSION"]
 
 ENTRYPOINT ["/start.sh"]
