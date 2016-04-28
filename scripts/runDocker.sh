@@ -40,7 +40,7 @@ case $1 in
                 DOCKER_EXTEND_COMMANDS=
             fi
             if [ -n $PREFIX ]; then
-                DOCKER_ALIAS="${PREFIX}_${DOCKER_ALIAS}"
+                DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
             fi
             echo " " > $PWD/${DOCKER_ALIAS}.out
             while [ "x$(docker ps -a | grep "$DOCKER_ALIAS")" != "x" ]; do
@@ -60,7 +60,7 @@ case $1 in
             for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
                 DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
                 if [ -n $PREFIX ]; then
-                    DOCKER_ALIAS="${PREFIX}_${DOCKER_ALIAS}"
+                    DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
                 fi
                 echo "Stopping and removing $DOCKER_ALIAS container."
                 docker stop $DOCKER_ALIAS > /dev/null 2>&1
@@ -93,7 +93,7 @@ case $1 in
         if [ "x${!_VOLUMES_FROMS})" != "x" ]; then
             for _volumes_from in ${!_VOLUMES_FROMS} ; do
                 if [ -n ${PREFIX} ]; then
-                    _volumes_from="${PREFIX}_${_volumes_from}"
+                    _volumes_from="${PREFIX}-${_volumes_from}"
                 fi
                 VOLUMES_FROM="$VOLUMES_FROM --volumes-from $_volumes_from"
             done
@@ -103,7 +103,7 @@ case $1 in
         if [ "x${!_LINKS}" != "x" ]; then
             for _link in ${!_LINKS} ; do
                 if [ -n $PREFIX ]; then
-                    _link="${PREFIX}_${_link}"
+                    _link="${PREFIX}-${_link}"
                 fi
                 LINK="$LINK --link $_link"
             done
@@ -126,7 +126,7 @@ case $1 in
         _ALIAS="${_PREFIX^^}_ALIAS"
         if [ "x${!_ALIAS}" != "x" ]; then
             if [ -n $PREFIX ]; then
-                _ALIAS="${PREFIX}_${!_ALIAS}"
+                _ALIAS="${PREFIX}-${!_ALIAS}"
             fi
             ALIAS="--name ${_ALIAS}"
         fi
