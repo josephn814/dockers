@@ -9,6 +9,7 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     unzip /installer/installer.zip -d /installer
     chmod +x $INSTALLER_FILE
     $INSTALLER_FILE -i silent -f /installer/installer.properties
+    chmod -R -t $DIRECTORY
 else
     echo "ATG has been installed."
 fi
