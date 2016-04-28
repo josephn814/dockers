@@ -1,8 +1,11 @@
 FROM josedeng/jdk:jdk-1.8.0_92
 
 ADD cookies /tmp/cookies
+ADD start.sh /start.sh
 
-RUN dos2unix /tmp/cookies && \
+RUN dos2unix /start.sh && \
+    chmod a+x /start.sh && \
+    dos2unix /tmp/cookies && \
     apt-get update && \
     apt-get install -y libxi6 libxrender1 libxtst6 libxext6 libfreetype6 wget unzip && \
     cd /tmp && \
@@ -17,4 +20,4 @@ RUN dos2unix /tmp/cookies && \
 USER developer
 VOLUME ["/home/developer"]
 
-ENTRYPOINT ["/opt/sqldeveloper/sqldeveloper.sh"]
+ENTRYPOINT ["/start.sh"]
