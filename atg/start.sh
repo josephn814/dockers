@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIRECTORY=/opt/ATG
-INSTALLER_FILE=/installer/OCPlatform11.1.bin
+INSTALLER_FILE=/installer/OCPlatform11_2.bin
 
 if [ "`ls -A $DIRECTORY`" = "" ]; then
     echo "Installing ATG."
