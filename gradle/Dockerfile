@@ -2,7 +2,7 @@ FROM josedeng/jdk:jdk-1.8.0_92
 
 ADD start.sh /start.sh
 
-ENV GRADLE_VERSION gradle-2.13
+ENV GRADLE_VERSION gradle-2.12
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
