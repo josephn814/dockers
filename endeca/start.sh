@@ -52,6 +52,7 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     echo "-fileOverwrite_/opt/endeca/ToolsAndFrameworks/11.2.0/server/workspace/conf/casconsole.properties=Yes" >> /tmp/cas_silent.txt
     $CAS_INSTALLER_FILE -i silent -f /tmp/cas_silent.txt
     chown -R developer:developer /opt/endeca
+    chmod -R -t /opt/endeca
 	sed -i "s/com.endeca.itl.cas.server.host=$(hostname)/com.endeca.itl.cas.server.host=localhost/g" /opt/endeca/CAS/workspace/conf/commandline.properties
 	sed -i '/ENDECA_TOOLS_CONF=/d' /opt/endeca/ToolsAndFrameworks/11.2.0/server/bin/workbench.sh
 else
