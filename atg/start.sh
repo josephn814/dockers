@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 DIRECTORY=/opt/ATG
-INSTALLER_FILE=/installer/OCPlatform11_2.bin
+INSTALLER_FILE=/installer/OCPlatform11.1.bin
 
 if [ "`ls -A $DIRECTORY`" = "" ]; then
     echo "Installing ATG."
     sudo chown -R developer:developer $DIRECTORY
-    unzip /installer/installer.zip -d /installer
+    unzip /installer/Platform.zip -d /installer
     chmod +x $INSTALLER_FILE
     $INSTALLER_FILE -i silent -f /installer/installer.properties
     chmod -R -t $DIRECTORY

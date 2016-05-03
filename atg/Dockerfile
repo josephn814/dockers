@@ -10,16 +10,15 @@ RUN dos2unix /tmp/wget.sh && \
     apt-get -q update && \
     apt-get -q -y install wget unzip && \
     source /tmp/wget.sh && \
-    mv /tmp/V78217-01.zip /installer/Platform.zip && \
-    mv /tmp/V78201-01.zip /installer/ACC.zip && \
-    mv /tmp/V78203-01.zip /installer/AssistedSelling.zip && \
-    mv /tmp/V78224-01.zip /installer/ReferenceStore.zip && \
-    mv /tmp/V100746-01.zip /installer/StoreAccelerator.zip && \
-    mv /tmp/V100779-01.zip /installer/CPQReferenceIntegration.zip && \
-    mv /tmp/V100780-01.zip /installer/MarketingCloudReferenceIntegration.zip && \
-    mv /tmp/V100781-01.zip /installer/RightNowReferenceIntegration.zip && \
-    mv /tmp/V100782-01.zip /installer/SiebelReferenceIntegration.zip && \
-    mv /tmp/V100783-01.zip /installer/SocialRelationshipManagementReferenceIntegration.zip && \
+    mv /tmp/V46005-01.zip /installer/Platform.zip && \
+    mv /tmp/V45986-01.zip /installer/ACC.zip && \
+    mv /tmp/V45987-01.zip /installer/AssistedSelling.zip && \
+    mv /tmp/V46007-01.zip /installer/ReferenceStore.zip && \
+    mv /tmp/V74842-01.zip /installer/CPQReferenceIntegration.zip && \
+    mv /tmp/V77159-01.zip /installer/MarketingCloudReferenceIntegration.zip && \
+    mv /tmp/V46993-01.zip /installer/RightNowReferenceIntegration.zip && \
+    mv /tmp/V75744-01.zip /installer/SiebelReferenceIntegration.zip && \
+    mv /tmp/V46994-01.zip /installer/SocialRelationshipManagementReferenceIntegration.zip && \
     chmod a+x /start.sh && \
     chmod 755 -R /installer && \
     mkdir -p /opt/ATG && \
