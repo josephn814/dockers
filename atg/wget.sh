@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Generated onTue May 03 07:15:30 PDT 2016# Start of user configurable variables
+# Generated onTue May 03 10:08:04 PDT 2016# Start of user configurable variables
 #
 LANG=C
 export LANG
@@ -52,8 +52,8 @@ rm -f sso.out
 
 
 
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V45986-01.zip&token=QXVieUJLWHA0clBQUjlPdWN6Z2N2QSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzE5MzU3MjYmYXJ1PTE3ODA3NzUyJmFncmVlbWVudElkPTE0Mjg4MDcmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTQxNjExMyZkb3dubG9hZFNvdXJjZT13Z2V0JnByb2ZpbGVJbnN0YW5jZU5hbWU9T3JhY2xlIEFURyBXZWIgQ29tbWVyY2UgMTEuMS4wLjAuMCBmb3IgTGludXggeDg2LTY0JnBsYXRmb3JtTmFtZT1MaW51eCB4ODYtNjQmbWVkaWFDaWQ9MjIyNjcyJnJlbGVhc2VDaWQ9JmlzUmVsZWFzZVNlYXJjaD1mYWxzZQ" -O $OUTPUT_DIR/V45986-01.zip >> $LOGFILE 2>&1
+  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V78201-01.zip&token=RllyZlo0YzA2WWttOXpXRUY1Y1c4USE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9ODI4NTA1NTkmYXJ1PTE5NDI1MDEzJmFncmVlbWVudElkPTE0Mjk3NzQmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU0MDM4MiZkb3dubG9hZFNvdXJjZT13Z2V0JnByb2ZpbGVJbnN0YW5jZU5hbWU9T3JhY2xlIEFURyBXZWIgQ29tbWVyY2UgMTEuMi4wLjAuMCBmb3IgTGludXggeDg2LTY0JnBsYXRmb3JtTmFtZT1MaW51eCB4ODYtNjQmbWVkaWFDaWQ9NDYyMDc2JnJlbGVhc2VDaWQ9JmlzUmVsZWFzZVNlYXJjaD1mYWxzZQ" -O $OUTPUT_DIR/V78201-01.zip >> $LOGFILE 2>&1
 
 
 
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V46005-01.zip&token=alduWmlTQVA0QkRTYnREU25HVWJUQSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9NzE5MzY0NzkmYXJ1PTE3ODA3NzcwJmFncmVlbWVudElkPTE0Mjg4MDcmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTQxNjExMyZkb3dubG9hZFNvdXJjZT13Z2V0JnByb2ZpbGVJbnN0YW5jZU5hbWU9T3JhY2xlIEFURyBXZWIgQ29tbWVyY2UgMTEuMS4wLjAuMCBmb3IgTGludXggeDg2LTY0JnBsYXRmb3JtTmFtZT1MaW51eCB4ODYtNjQmbWVkaWFDaWQ9MjIyNjk0JnJlbGVhc2VDaWQ9JmlzUmVsZWFzZVNlYXJjaD1mYWxzZQ" -O $OUTPUT_DIR/V46005-01.zip >> $LOGFILE 2>&1
+  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V78217-01.zip&token=Y2dkZFVTNmVabnlQdzVZbTU1YjlvUSE6OiF1c2VybmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJnVzZXJJZD03NTg0MTk4JmNhbGxlcj1TZWFyY2hTb2Z0d2FyZSZjb3VudHJ5SWQ9Q04mZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZmaWxlSWQ9ODI4NTM1NjImYXJ1PTE5NDI1NDk2JmFncmVlbWVudElkPTE0Mjk3NzQmc29mdHdhcmVDaWRzPTEwMTgzMiZwbGF0Zm9ybUNpZHM9MzUmcHJvZmlsZUluc3RhbmNlQ2lkPTU0MDM4MiZkb3dubG9hZFNvdXJjZT13Z2V0JnByb2ZpbGVJbnN0YW5jZU5hbWU9T3JhY2xlIEFURyBXZWIgQ29tbWVyY2UgMTEuMi4wLjAuMCBmb3IgTGludXggeDg2LTY0JnBsYXRmb3JtTmFtZT1MaW51eCB4ODYtNjQmbWVkaWFDaWQ9NDYyMzE3JnJlbGVhc2VDaWQ9JmlzUmVsZWFzZVNlYXJjaD1mYWxzZQ" -O $OUTPUT_DIR/V78217-01.zip >> $LOGFILE 2>&1

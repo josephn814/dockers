@@ -6,8 +6,8 @@ DYNAMO_HOME=/opt/ATG/home ; export DYNAMO_HOME
 CLASSPATH=.:$JAVA_HOME/lib ; export CLASSPATH
 
 DIRECTORY=/opt/ATG
-PLATFORM_INSTALLER_FILE=/installer/OCPlatform11.1.bin
-ACC_INSTALLER_FILE=/installer/OCACC11.1.bin
+PLATFORM_INSTALLER_FILE=/installer/OCPlatform11_2.bin
+ACC_INSTALLER_FILE=/installer/OCACC11.2.bin
 
 
 if [ "`ls -A $DIRECTORY`" = "" ]; then

@@ -10,8 +10,8 @@ RUN dos2unix /tmp/wget.sh && \
     apt-get -q update && \
     apt-get -q -y install libxi6 libxrender1 libxtst6 libxext6 libfreetype6 wget unzip && \
     source /tmp/wget.sh && \
-    mv /tmp/V46005-01.zip /installer/Platform.zip && \
-    mv /tmp/V45986-01.zip /installer/ACC.zip && \
+    mv /tmp/V78217-01.zip /installer/Platform.zip && \
+    mv /tmp/V78201-01.zip /installer/ACC.zip && \
     chmod a+x /start.sh && \
     chmod 755 -R /installer && \
     mkdir -p /opt/ATG && \
