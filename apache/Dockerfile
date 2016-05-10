@@ -29,8 +29,6 @@ RUN dos2unix /start.sh && \
     rm -rf /tmp/*
 
 USER developer
-VOLUME ["/opt/apache/conf"]
-VOLUME ["/opt/apache/htdocs"]
 EXPOSE 80
 
 ENTRYPOINT ["/start.sh"]
