@@ -18,14 +18,72 @@ case $1 in
         echo "ide , for running IDE environment"
         echo "ide -debug, for debugging running."
         ;;
-    'env')
-        if [ ! -v $DEPENDENCIES ]; then
-            echo "DEPENDENCIES is nothing."
+    'env0')
+        if [ ! -v $DEPENDENCIES0 ]; then
+            echo "DEPENDENCIES0 is nothing."
             exit -1
         fi
 
-        for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
-            DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
+        for DOCKER_IMAGE in "${!DEPENDENCIES0[@]}" ; do
+            DOCKER_ALIAS="${DEPENDENCIES0["$DOCKER_IMAGE"]}"
+            _DOCKER_ALIAS="${DOCKER_ALIAS//\./_}"
+            _DOCKER_COMMANDS="${_DOCKER_ALIAS^^}_COMMANDS"
+            if [ "x${!_DOCKER_COMMANDS}" != "x" ]; then
+                DOCKER_COMMANDS="${!_DOCKER_COMMANDS}"
+            else
+                DOCKER_COMMANDS=
+            fi
+            _DOCKER_EXTEND_COMMANDS="${_DOCKER_ALIAS^^}_EXTEND_COMMANDS"
+            if [ "x${!_DOCKER_EXTEND_COMMANDS}" != "x" ]; then
+                DOCKER_EXTEND_COMMANDS="${!_DOCKER_EXTEND_COMMANDS}"
+            else
+                DOCKER_EXTEND_COMMANDS=
+            fi
+            if [ -n $PREFIX ]; then
+                DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
+            fi
+            echo " " > $PWD/${DOCKER_ALIAS}.out
+            while [ "x$(docker ps -a | grep "$DOCKER_ALIAS")" != "x" ]; do
+                docker stop $DOCKER_ALIAS > /dev/null 2>&1
+                docker rm -v $DOCKER_ALIAS > /dev/null 2>&1
+            done
+            echo "Creating $DOCKER_ALIAS container."
+            echo "*********************************"
+            echo "docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS"
+            echo "*********************************"
+            echo
+            nohup docker run --name $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS >> $PWD/${DOCKER_ALIAS}.out 2>&1 &
+        done
+
+        shutdown(){
+            for DOCKER_IMAGE in "${!DEPENDENCIES0[@]}" ; do
+                DOCKER_ALIAS="${DEPENDENCIES0["$DOCKER_IMAGE"]}"
+                if [ -n $PREFIX ]; then
+                    DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
+                fi
+                echo "Stopping and removing $DOCKER_ALIAS container."
+                docker stop $DOCKER_ALIAS > /dev/null 2>&1
+                docker rm -v $DOCKER_ALIAS > /dev/null 2>&1
+            done
+            END=1
+        }
+
+        trap "shutdown" INT TERM
+
+        echo "EVN0 have been started. Please using CTRL+C to quit."
+
+        while [ "x$END" = "x" ]; do
+            sleep 1
+        done
+        ;;
+	'env1')
+        if [ ! -v $DEPENDENCIES1 ]; then
+            echo "DEPENDENCIES1 is nothing."
+            exit -1
+        fi
+
+        for DOCKER_IMAGE in "${!DEPENDENCIES1[@]}" ; do
+            DOCKER_ALIAS="${DEPENDENCIES1["$DOCKER_IMAGE"]}"
             _DOCKER_ALIAS="${DOCKER_ALIAS//\./_}"
             _DOCKER_COMMANDS="${_DOCKER_ALIAS^^}_COMMANDS"
             if [ "x${!_DOCKER_COMMANDS}" != "x" ]; then
@@ -57,8 +115,8 @@ case $1 in
 
         shutdown(){
             echo
-            for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
-                DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
+            for DOCKER_IMAGE in "${!DEPENDENCIES1[@]}" ; do
+                DOCKER_ALIAS="${DEPENDENCIES1["$DOCKER_IMAGE"]}"
                 if [ -n $PREFIX ]; then
                     DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
                 fi
@@ -71,7 +129,7 @@ case $1 in
 
         trap "shutdown" INT TERM
 
-        echo "Environments have been started. Please using CTRL+C to quit."
+        echo "EVN1 have been started. Please using CTRL+C to quit."
 
         while [ "x$END" = "x" ]; do
             sleep 1
