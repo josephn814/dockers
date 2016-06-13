@@ -2,6 +2,8 @@ FROM josedeng/jdk:jdk-1.8.0_92
 
 ENV IDEA_JDK=$JAVA_HOME
 
+COPY . /
+
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get update && \
