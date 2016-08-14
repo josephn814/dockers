@@ -19,13 +19,13 @@ case $1 in
         echo "ide -debug, for debugging running."
         ;;
     'env0')
-        if [ ! -v $DEPENDENCIES0 ]; then
-            echo "DEPENDENCIES0 is nothing."
+        if [ ! -v $DEPENDENCIES ]; then
+            echo "DEPENDENCIES is nothing."
             exit -1
         fi
 
-        for DOCKER_IMAGE in "${!DEPENDENCIES0[@]}" ; do
-            DOCKER_ALIAS="${DEPENDENCIES0["$DOCKER_IMAGE"]}"
+        for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
+            DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
             _DOCKER_ALIAS="${DOCKER_ALIAS//\./_}"
             _DOCKER_COMMANDS="${_DOCKER_ALIAS^^}_COMMANDS"
             if [ "x${!_DOCKER_COMMANDS}" != "x" ]; then
@@ -39,7 +39,7 @@ case $1 in
             else
                 DOCKER_EXTEND_COMMANDS=
             fi
-            if [ -n $PREFIX ]; then
+            if [ -n "$PREFIX" ]; then
                 DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
             fi
             echo " " > $PWD/${DOCKER_ALIAS}.out
@@ -56,9 +56,9 @@ case $1 in
         done
 
         shutdown(){
-            for DOCKER_IMAGE in "${!DEPENDENCIES0[@]}" ; do
-                DOCKER_ALIAS="${DEPENDENCIES0["$DOCKER_IMAGE"]}"
-                if [ -n $PREFIX ]; then
+            for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
+                DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
+                if [ -n "$PREFIX" ]; then
                     DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
                 fi
                 echo "Stopping and removing $DOCKER_ALIAS container."
@@ -77,13 +77,13 @@ case $1 in
         done
         ;;
 	'env1')
-        if [ ! -v $DEPENDENCIES1 ]; then
-            echo "DEPENDENCIES1 is nothing."
+        if [ ! -v $DEPENDENCIES ]; then
+            echo "DEPENDENCIES is nothing."
             exit -1
         fi
 
-        for DOCKER_IMAGE in "${!DEPENDENCIES1[@]}" ; do
-            DOCKER_ALIAS="${DEPENDENCIES1["$DOCKER_IMAGE"]}"
+        for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
+            DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
             _DOCKER_ALIAS="${DOCKER_ALIAS//\./_}"
             _DOCKER_COMMANDS="${_DOCKER_ALIAS^^}_COMMANDS"
             if [ "x${!_DOCKER_COMMANDS}" != "x" ]; then
@@ -97,7 +97,7 @@ case $1 in
             else
                 DOCKER_EXTEND_COMMANDS=
             fi
-            if [ -n $PREFIX ]; then
+            if [ -n "$PREFIX" ]; then
                 DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
             fi
             echo " " > $PWD/${DOCKER_ALIAS}.out
@@ -115,9 +115,9 @@ case $1 in
 
         shutdown(){
             echo
-            for DOCKER_IMAGE in "${!DEPENDENCIES1[@]}" ; do
-                DOCKER_ALIAS="${DEPENDENCIES1["$DOCKER_IMAGE"]}"
-                if [ -n $PREFIX ]; then
+            for DOCKER_IMAGE in "${!DEPENDENCIES[@]}" ; do
+                DOCKER_ALIAS="${DEPENDENCIES["$DOCKER_IMAGE"]}"
+                if [ -n "$PREFIX" ]; then
                     DOCKER_ALIAS="${PREFIX}-${DOCKER_ALIAS}"
                 fi
                 echo "Stopping and removing $DOCKER_ALIAS container."
@@ -160,7 +160,7 @@ case $1 in
         _LINKS="${_PREFIX^^}_LINKS"
         if [ "x${!_LINKS}" != "x" ]; then
             for _link in ${!_LINKS} ; do
-                if [ -n $PREFIX ]; then
+                if [ -n "$PREFIX" ]; then
                     _link="${PREFIX}-${_link}"
                 fi
                 LINK="$LINK --link $_link"
@@ -183,7 +183,7 @@ case $1 in
 
         _ALIAS="${_PREFIX^^}_ALIAS"
         if [ "x${!_ALIAS}" != "x" ]; then
-            if [ -n $PREFIX ]; then
+            if [ -n "$PREFIX" ]; then
                 _ALIAS="${PREFIX}-${!_ALIAS}"
             fi
             ALIAS="--name ${_ALIAS}"
