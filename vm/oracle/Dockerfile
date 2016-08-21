@@ -14,7 +14,7 @@ cp start.sh /tmp/start.sh
     sed -i 's/\r$//' /tmp/start.sh && \
     chmod a+x /tmp/start.sh && \
     yum install -y wget unzip sudo && \
-    yum install -y oracle-rdbms-server-12cR1-preinstall && \
+    yum install -y oracle-rdbms-server-12cR1-preinstall
     cd /tmp && \
     /bin/bash -c "source /tmp/wget.sh" && \
     echo "oracle ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
