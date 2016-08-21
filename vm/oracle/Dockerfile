@@ -36,4 +36,5 @@ cp start.sh /tmp/start.sh
 #USER oracle
 #VOLUME ["/opt/oracle/data"]
 
-/bin/bash /tmp/start.sh
+su oracle -c "/bin/bash /tmp/start.sh"
+
