@@ -1,13 +1,13 @@
-FROM oraclelinux:7.2
+#FROM oraclelinux:7.2
 
-ADD wget.sh /tmp/wget.sh
-ADD db_install.rsp /tmp/db_install.rsp
-ADD dbca.rsp /home/oracle/dbca.rsp
-ADD General_Purpose.dbc /home/oracle/General_Purpose.dbc
-ADD start.sh /start.sh
+cp wget.sh /tmp/wget.sh
+cp db_install.rsp /tmp/db_install.rsp
+cp dbca.rsp /home/oracle/dbca.rsp
+cp General_Purpose.dbc /home/oracle/General_Purpose.dbc
+cp start.sh /start.sh
 
 # Install Tools
-RUN sed -i 's/\r$//' /tmp/wget.sh && \
+    sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /tmp/db_install.rsp && \
     sed -i 's/\r$//' /home/oracle/dbca.rsp && \
     sed -i 's/\r$//' /home/oracle/General_Purpose.dbc && \
@@ -32,8 +32,8 @@ RUN sed -i 's/\r$//' /tmp/wget.sh && \
     yum clean all && \
     rm -rf /tmp/*
 
-EXPOSE 1521
-USER oracle
-VOLUME ["/opt/oracle/data"]
+# EXPOSE 1521
+#USER oracle
+#VOLUME ["/opt/oracle/data"]
 
-ENTRYPOINT ["/start.sh"]
+/bin/bash start.sh
