@@ -4,15 +4,15 @@ cp wget.sh /tmp/wget.sh
 cp db_install.rsp /tmp/db_install.rsp
 cp dbca.rsp /home/oracle/dbca.rsp
 cp General_Purpose.dbc /home/oracle/General_Purpose.dbc
-cp start.sh /start.sh
+cp start.sh /tmp/start.sh
 
 # Install Tools
     sed -i 's/\r$//' /tmp/wget.sh && \
     sed -i 's/\r$//' /tmp/db_install.rsp && \
     sed -i 's/\r$//' /home/oracle/dbca.rsp && \
     sed -i 's/\r$//' /home/oracle/General_Purpose.dbc && \
-    sed -i 's/\r$//' /start.sh && \
-    chmod a+x /start.sh && \
+    sed -i 's/\r$//' /tmp/start.sh && \
+    chmod a+x /tmp/start.sh && \
     yum install -y wget unzip sudo && \
     yum install -y oracle-rdbms-server-12cR1-preinstall && \
     cd /tmp && \
@@ -36,4 +36,4 @@ cp start.sh /start.sh
 #USER oracle
 #VOLUME ["/opt/oracle/data"]
 
-/bin/bash start.sh
+/bin/bash /tmp/start.sh
