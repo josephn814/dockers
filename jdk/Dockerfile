@@ -9,7 +9,7 @@ RUN apt-get -q update && \
          --no-check-certificate \
          --no-cookies \
          --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         http://download.oracle.com/otn-pub/java/jdk/8u121-b13/jdk-8u121-linux-x64.tar.gz && \
+         http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
     chown -R developer:developer $JAVA_HOME && \
