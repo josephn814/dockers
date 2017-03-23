@@ -1,4 +1,4 @@
-FROM josedeng/jdk:jdk-1.8.0_92
+FROM josedeng/jdk:jdk-1.8.0_121
 
 ENV IDEA_JDK=$JAVA_HOME
 
