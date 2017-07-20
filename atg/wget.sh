@@ -7,8 +7,10 @@ LANG=C
 export LANG
 
 # SSO username and password
-read -p 'SSO User Name:' SSO_USERNAME
-read -sp 'SSO Password:' SSO_PASSWORD
+SSO_USERNAME=josephn814@foxmail.com
+SSO_PASSWORD=112233qq
+
+
 
 
 # Path to wget command
