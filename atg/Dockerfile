@@ -10,7 +10,7 @@ RUN dos2unix /tmp/wget.sh && \
     chmod a+x /tmp/wget.sh && \
     apt-get -q update && \
     apt-get -q -y install libxi6 libxrender1 libxtst6 libxext6 libfreetype6 wget unzip && \
-    sh /tmp/wget.sh && \
+    source /tmp/wget.sh && \
     mv /tmp/V861209-01.zip /installer/Platform.zip && \
     mv /tmp/V861194-01.zip /installer/ACC.zip && \
     chmod a+x /start.sh && \
