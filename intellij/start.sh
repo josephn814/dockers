@@ -6,6 +6,4 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     sudo chown -R developer:developer $DIRECTORY
 fi
 
-nohup /daemon -p 8888 -u josedeng > /dev/null 2>&1 &
-
 /opt/ide/bin/idea.sh

@@ -5,7 +5,6 @@ ENV IDEA_JDK=$JAVA_HOME
 COPY . /
 
 RUN dos2unix /start.sh && \
-    chmod a+x /daemon && \
     chmod a+x /start.sh && \
     apt-get update && \
     apt-get install -y libxi6 libxrender1 libxtst6 libxext6 libfreetype6 git subversion mercurial wget libsecret-1-0 gnome-keyring && \
