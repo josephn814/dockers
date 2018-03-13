@@ -207,6 +207,7 @@ case $1 in
             echo "${_FINAL_COMMANDS}"
             echo
         fi
+        echo "Excuting following command: $_FINAL_COMMANDS"
         docker ${_FINAL_COMMANDS}
         ;;
 esac
