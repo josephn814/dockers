@@ -9,4 +9,6 @@ RUN dos2unix /start.sh && \
 USER developer
 VOLUME ["/home/developer"]
 
+EXPOSE 8888
+
 ENTRYPOINT ["/start.sh"]
