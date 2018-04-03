@@ -1,4 +1,4 @@
-FROM josedeng/jdk:jdk-1.7.0_80
+FROM josedeng/jdk:jdk-1.8.0_162
 
 ADD start.sh /start.sh
 
