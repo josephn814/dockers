@@ -10,4 +10,4 @@ RUN dos2unix /chown.sh && \
 USER developer
 
 VOLUME ["/home/developer"]
-ENTRYPOINT ["/chown.sh && /bin/bash"]
+ENTRYPOINT ["/chown.sh"]
