@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-GRADLE_HOME=/opt/gradle-2.12 ; export GRADLE_HOME
+GRADLE_HOME=/opt/gradle-4.6 ; export GRADLE_HOME
 if [ "x$JAVA_HOME" = "x" ]; then
-    JAVA_HOME=/opt/jdk1.8.0_92
+    JAVA_HOME=/opt/jdk1.8.0_162
 fi
 export JAVA_HOME
 PATH=$JAVA_HOME/bin:$GRADLE_HOME/bin:$PATH ; export PATH
