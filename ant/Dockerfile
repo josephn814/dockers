@@ -9,7 +9,7 @@ RUN dos2unix /start.sh && \
     wget -q -O /tmp/installer.tar.gz \
          --no-check-certificate \
          --no-cookies \
-         https://www.apache.org/dist/ant/binaries/apache-ant-1.10.3-bin.tar.gz && \
+         https://www.apache.org/dist/ant/binaries/apache-ant-1.9.11-bin.tar.gz && \
     mkdir -p /opt/ant && \
     tar -xzf /tmp/installer.tar.gz --strip-components=1 -C /opt/ant && \
     chown -R developer:developer /opt/ant && \
