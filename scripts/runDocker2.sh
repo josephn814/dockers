@@ -59,7 +59,7 @@ case $1 in
         done
 
         shutdown(){
-            for _KEY in "${!DEPENDENCIES0[@]}" ; do
+            for _KEY in "${!DEPENDENCIES[@]}" ; do
                 KEY1=${_KEY%,*}
                 KEY2=${_KEY#*,}
                 if [ x"$_INPUT" = x"$KEY1" ]; then
@@ -78,7 +78,7 @@ case $1 in
 
         trap "shutdown" INT TERM
 
-        echo "EVN0 have been started. Please using CTRL+C to quit."
+        echo "$1 have been started. Please using CTRL+C to quit."
 
         while [ "x$END" = "x" ]; do
             sleep 1
