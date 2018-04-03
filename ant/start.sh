@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "x$JAVA_HOME" = "x" ]; then
-    JAVA_HOME=/opt/jdk1.8.0_92
+    JAVA_HOME=/opt/jdk1.8.0_162
 fi
 export JAVA_HOME
 ANT_HOME=opt/ant ; export ANT_HOME
