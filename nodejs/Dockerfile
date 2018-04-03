@@ -12,7 +12,7 @@ RUN dos2unix /start.sh && \
          --no-check-certificate \
          --no-cookies \
          https://nodejs.org/dist/$NODEJS_VERSION/node-${NODEJS_VERSION}-linux-x64.tar.xz && \
-    mkdir -p /opt/node-$NODEJS_VERSION && \
+    mkdir -p /opt/nodejs && \
     tar -xJf /tmp/installer.tar.xz --strip-components=1 -C /opt/nodejs && \
     chown -R developer:developer /opt/nodejs && \
     rm -rf ~/.npm/ && \
