@@ -3,22 +3,22 @@
 NODE_HOME=/opt/nodejs ; export NODE_HOME
 PATH=$NODE_HOME/bin:$PATH ; export PATH
 
-shutdown(){
-	END=1
-}
+if [ "`ls -A $JBOSS_HOME`" = "" ]; then
+    tar -xJf /installer.tar.xz --strip-components=1 -C $NODE_HOME
+    chown -R developer:developer $NODE_HOME
+fi
 
 case "$1" in
     '')
-        trap 'shutdown' INT TERM
+	trap 'shutdown' INT TERM
         echo "Container Started."
-        $NODE_HOME/bin/node --version
-        while [ "$END" == '' ]; do
-            sleep 1
-        done
+		while [ "$END" == '' ]; do
+			sleep 1
+		done
 		;;
-	*)
-		echo "Container is starting."
-		$@
-		;;
+     *)
+	echo "Container is starting......."
+	$@
+	;;
 esac
 
