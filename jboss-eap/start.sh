@@ -12,20 +12,16 @@ if [ "`ls -A $JBOSS_HOME`" = "" ]; then
     chown -R developer:developer $JBOSS_HOME
 fi
 
-rm -rf $JBOSS_HOME/standalone/data/*
-rm -rf $JBOSS_HOME/standalone/tmp/*
-rm -rf $JBOSS_HOME/standalone/log/*
-
-/extend.sh
-
 case "$1" in
     '')
-        su developer -c "$JBOSS_HOME/bin/standalone.sh -h"
+	trap 'shutdown' INT TERM
+        echo "Container Started."
+		while [ "$END" == '' ]; do
+			sleep 1
+		done
 		;;
-	*)
-		COMMANDS="$JBOSS_HOME/bin/standalone.sh $@"
-		echo "Execute command : $COMMANDS"
-		echo "Container is starting......."
-		su developer -c "$COMMANDS"
-		;;
+     *)
+	echo "Container is starting......."
+	$@
+	;;
 esac
