@@ -13,9 +13,8 @@ RUN dos2unix /start.sh && \
          --no-cookies \
          https://nodejs.org/dist/$NODEJS_VERSION/node-${NODEJS_VERSION}-linux-x64.tar.xz && \
     mkdir -p /opt/node-$NODEJS_VERSION && \
-    tar -xJf /tmp/installer.tar.xz --strip-components=1 -C /opt/node-$NODEJS_VERSION && \
-    chown -R developer:developer /opt/node-$NODEJS_VERSION && \
-    /opt/node-$NODEJS_VERSION/bin/npm install -g gulp bower && \
+    tar -xJf /tmp/installer.tar.xz --strip-components=1 -C /opt/nodejs && \
+    chown -R developer:developer /opt/nodejs && \
     rm -rf ~/.npm/ && \
     apt-get clean && \
     apt-get autoremove wget xz-utils --purge -y && \
@@ -23,6 +22,6 @@ RUN dos2unix /start.sh && \
     rm -rf /tmp/*
 
 USER developer
-VOLUME ["/opt/node-$NODEJS_VERSION"]
+VOLUME ["/opt/nodejs"]
 
 ENTRYPOINT ["/start.sh"]

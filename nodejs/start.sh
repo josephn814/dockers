@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NODE_HOME=/opt/node-v4.4.3 ; export NODE_HOME
+NODE_HOME=/opt/nodejs ; export NODE_HOME
 PATH=$NODE_HOME/bin:$PATH ; export PATH
 
 shutdown(){
