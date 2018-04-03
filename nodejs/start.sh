@@ -3,7 +3,7 @@
 NODE_HOME=/opt/nodejs ; export NODE_HOME
 PATH=$NODE_HOME/bin:$PATH ; export PATH
 
-if [ "`ls -A $JBOSS_HOME`" = "" ]; then
+if [ "`ls -A $NODE_HOME`" = "" ]; then
     tar -xJf /installer.tar.xz --strip-components=1 -C $NODE_HOME
     chown -R developer:developer $NODE_HOME
 fi
