@@ -13,6 +13,7 @@ RUN dos2unix /start.sh && \
          --no-cookies \
          https://nodejs.org/dist/$NODEJS_VERSION/node-${NODEJS_VERSION}-linux-x64.tar.xz && \
     mkdir -p /opt/nodejs && \
+    chown -R developer:developer /opt/nodejs && \
     rm -rf ~/.npm/ && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
