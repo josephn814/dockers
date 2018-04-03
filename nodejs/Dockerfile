@@ -1,8 +1,8 @@
-FROM josedeng/ubuntu:ubuntu-15.10
+FROM josedeng/ubuntu:ubuntu-16.04
 
 ADD start.sh /start.sh
 
-ENV NODEJS_VERSION v4.4.3
+ENV NODEJS_VERSION v8.11.1
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
