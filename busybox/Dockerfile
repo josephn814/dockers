@@ -7,7 +7,7 @@ COPY . /
 RUN dos2unix /chown.sh && \
     chmod a+x /chown.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget git iputils-ping net-tools && \
+    apt-get -q -y install wget git iputils-ping net-tools vi && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
