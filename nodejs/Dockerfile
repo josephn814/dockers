@@ -2,7 +2,8 @@ FROM josedeng/ubuntu:ubuntu-16.04
 
 ADD start.sh /start.sh
 
-ENV NODEJS_VERSION v8.11.1
+ENV NODEJS_VERSION v4.9.1
+ENV NODEJS_PATH latest-v4.x
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
@@ -11,7 +12,7 @@ RUN dos2unix /start.sh && \
     wget -q -O /installer.tar.xz \
          --no-check-certificate \
          --no-cookies \
-         https://nodejs.org/dist/$NODEJS_VERSION/node-${NODEJS_VERSION}-linux-x64.tar.xz && \
+         https://nodejs.org/dist/$NODEJS_PATH/node-${NODEJS_VERSION}-linux-x64.tar.xz && \
     mkdir -p /opt/nodejs && \
     chown -R developer:developer /opt/nodejs && \
     rm -rf ~/.npm/ && \
