@@ -8,6 +8,9 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     echo "alias ll='ls -alF'" >> $DIRECTORY/.bashrc
     echo "alias la='ls -A'" >> $DIRECTORY/.bashrc
     echo "alias l='ls -CF'" >> $DIRECTORY/.bashrc
+    echo "LD_LIBRARY_PATH=/opt/sqlplus:\$LD_LIBRARY_PATH ; export LD_LIBRARY_PATH" >> $DIRECTORY/.bashrc
+    echo "NLS_LANG=AMERICAN_AMERICA.UTF8 ; export NLS_LANG" >> $DIRECTORY/.bashrc
+    echo "PATH=/opt/sqlplus:\$PATH ; export PATH" >> $DIRECTORY/.bashrc
     source $DIRECTORY/.bashrc
 fi
 
