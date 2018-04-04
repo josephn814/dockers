@@ -7,7 +7,6 @@ COPY . /
 RUN dos2unix /chown.sh && \
     chmod a+x /chown.sh && \
     apt-get -q update && \
-<<<<<<< HEAD
     apt-get -q -y install wget git iputils-ping net-tools elvis-tiny curl libaio1 unzip && \
     wget --load-cookies /cookies
          -O /tmp/installer.zip \
@@ -25,11 +24,7 @@ RUN dos2unix /chown.sh && \
     ln -s libclntsh.so.12.1 libclntsh.so && \
     ln -s libocci.so.12.1 libocci.so && \
     chown -R developer:developer /opt/sqlplus && \ 
-    apt-get clean && \ 
-=======
-    apt-get -q -y install wget git iputils-ping net-tools elvis-tiny && \
     apt-get clean && \
->>>>>>> parent of a4bed21... add sqlplus
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
