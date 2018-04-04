@@ -1,9 +1,9 @@
 www.oracle.com	FALSE	/technetwork/topics	FALSE	0	testSessionCookie	Enabled
 www.oracle.com	FALSE	/technetwork/topics	FALSE	1525428342	ChromeDeveloperCookie	123
 .oracle.com	TRUE	/	FALSE	1569543258	ELOQUA	GUID=07F6515D842D439C9820A67337392E2B
-www.oracle.com	FALSE	/	FALSE	1585909691	_sdsat_countryExclusion	false
+www.oracle.com	FALSE	/	FALSE	1585910770	_sdsat_countryExclusion	false
 www.oracle.com	FALSE	/	FALSE	1585902927	_sdsat_scData	[object Object]
-.oracle.com	TRUE	/	FALSE	1680604092	s_fid	02C90ED65DFDC7CF-06519255892C3C1A
+.oracle.com	TRUE	/	FALSE	1680605171	s_fid	02C90ED65DFDC7CF-06519255892C3C1A
 www.oracle.com	FALSE	/	FALSE	1585902927	_sdsat_metaDataLayer	[object Object]
 .oracle.com	TRUE	/	FALSE	1530607422	ORA_UCM_INFO	3~7AAAB8F95E166FB8E0401490BDAB563A~Josephn~Clark~josephn814@foxmail.com
 .oracle.com	TRUE	/	FALSE	1530607422	ORA_WWW_PERSONALIZE	v:1~i:22~r:7~g:APAC~l:zh-CN~cs:NOT_FOUND~cn:TM2DSnet
@@ -29,8 +29,6 @@ docs.oracle.com	FALSE	/	FALSE	0	ORA_B28359_01_NAV	b28317idm139751985844000
 community.oracle.com	FALSE	/	FALSE	0	JSESSIONID	13908C018C1E50132E0F665385696F6F
 community.oracle.com	FALSE	/	FALSE	0	jive.security.context	QyfS4DG8hegSPxRbyTX03v//////////GR2qg1MbzVOe22kwAus/7Zjf0BpnGwBDt9BilcQsUfsK1fN76pkfYCCt2ZjA1FRlStoyizU3FYGWhKFR/DOKAGM1eBI2qqRi
 www.oracle.com	FALSE	/	FALSE	0	JSESSIONID	d2yP9SursP7w_YJcrmH6pI6u_3ImVbE6xubmPXb9tZu9TBKGCiQf!-730863964!916350301
-.oracle.com	TRUE	/	FALSE	1522839492	oraclelicense	accept-ic_linuxx8664-cookie
+.oracle.com	TRUE	/	FALSE	1522840571	oraclelicense	accept-ic_linuxx8664-cookie
 .oracle.com	TRUE	/	FALSE	1522843405	ak_bmsc	9FA5F268B6824B555F616974440B448BB832579DF3620000F2A2C45AC2872B18~plurP56J0CtWv3op24l6ACooDTxCY3cQvXPcwyPjCuY/+qIr5a9exAKoMeGFxtO3wNVh7SisL4V7vvu5Jjd3bWAaa8wEXA5HrtXftUZuLB6gqjD0X0Z7MUFGFA49JanElpQAYrjuTccqbhmRrQE+nX9lzvaHTaGWQdRCjaHel0v45DDGZTMX++wvW+JxlKTNRpHzrJrgc6D7HsttAujjtvfM67a59qHAgZpjq+cybMZJA=
-.oracle.com	TRUE	/	FALSE	1525429692	s_nr	1522837692596-Repeat
-.oracle.com	TRUE	/	FALSE	1522839492	gpw_e24	http%3A%2F%2Fwww.oracle.com%2Ftechnetwork%2Ftopics%2Flinuxx86-64soft-092277.html%23ic_x64_inst
-.oracle.com	TRUE	/	FALSE	0	s_sq	oracleotnlive%252Coracleglobal%3D%2526c.%2526a.%2526activitymap.%2526page%253Dotn%25253Aen-us%25253A%25252Ftopics%25252Flinuxx86-64soft-092277.html%2526link%253Don%2526region%253Dotn01v0%2526pageIDType%253D1%2526.activitymap%2526.a%2526.c%2526pid%253Dotn%25253Aen-us%25253A%25252Ftopics%25252Flinuxx86-64soft-092277.html%2526pidt%253D1%2526oid%253Dfunctiononclick%252528event%252529%25257BacceptAgreement%252528window.self%252529%25253B%25257D%2526oidt%253D2%2526ot%253DRADIO
+.oracle.com	TRUE	/	FALSE	1525430771	s_nr	1522838771079-Repeat
