@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CAS_INSTALLER_FILE=/tmp/OCcas11.1.0-Linux64.bin
-MDEX_INSTALLER_FILE=/tmp/OCmdex6.5.1-Linux64_829811.bin
+CAS_INSTALLER_FILE=/tmp/OCcas11.1.0-Linux64.sh
+MDEX_INSTALLER_FILE=/tmp/OCmdex6.5.1-Linux64_829811.sh
 PLATFORM_INSTALLER_FILE=/tmp/OCplatformservices11.1.0-Linux64.bin
 
 if [ "`ls -A /opt/endeca`" = "" ]; then
@@ -18,39 +18,26 @@ if [ "`ls -A /opt/endeca`" = "" ]; then
     chmod +x $PLATFORM_INSTALLER_FILE
     echo "USER_INSTALL_DIR=/opt" > /tmp/mdex_silent.txt
     echo "-fileOverwrite_/opt/endeca/MDEX/6.5.1/Uninstall/Uninstall_Oracle Commerce MDEX Engine 6.5.1 x64 Edition.lax=Yes" >> /tmp/mdex_silent.txt
-    $MDEX_INSTALLER_FILE -i silent -f /tmp/mdex_silent.txt
+    $MDEX_INSTALLER_FILE --silent --target /opt
     source /opt/endeca/MDEX/6.5.1/mdex_setup_sh.ini
-    echo "USER_INSTALL_DIR=/opt" > /tmp/platform_silent.txt
-    echo "CHOSEN_FEATURE_LIST=PS,ACS,ACA,Ref-Impl" >> /tmp/platform_silent.txt
-    echo "CHOSEN_INSTALL_FEATURE_LIST=PS,ACS,ACA,Ref-Impl" >> /tmp/platform_silent.txt
-    echo "CHOSEN_INSTALL_SET=Complete" >> /tmp/platform_silent.txt
-    echo "ETOOLS_HTTP_PORT=8888" >> /tmp/platform_silent.txt
-    echo "ETOOLS_SERVER_PORT=8090" >> /tmp/platform_silent.txt
-    echo "EAC_MDEX_ROOT=/opt/endeca/MDEX/6.5.1" >> /tmp/platform_silent.txt
-    echo "-fileOverwrite_/opt/endeca/PlatformServices/11.1.0/Uninstall/Uninstall_Oracle Commerce Guided Search Platform Services 11.1.0.lax=Yes" >> /tmp/platform_silent.txt
-    $PLATFORM_INSTALLER_FILE -i silent -f /tmp/platform_silent.txt
+    echo "8888" > /tmp/platform_silent.txt
+    echo "8090" >> /tmp/platform_silent.txt
+    echo "Y" >> /tmp/platform_silent.txt
+    echo "/opt/endeca/MDEX/6.5.1" >> /tmp/platform_silent.txt
+    echo "Y" >> /tmp/platform_silent.txt
+    echo "8500" > /tmp/cas_silent.txt
+    echo "8506" >> /tmp/cas_silent.txt
+    echo "localhost" >> /tmp/cas_silent.txt
+    $PLATFORM_INSTALLER_FILE --silent --target /opt < /tmp/platform_silent.txt
     source /opt/endeca/PlatformServices/workspace/setup/installer_sh.ini
     chown -R developer:developer /opt/endeca
 	sed -i "s/host=$(hostname)/host=localhost/g" /opt/endeca/PlatformServices/workspace/conf/eaccmd.properties
-    su developer -c  "/tmp/cd/Disk1/install/silent_install.sh /installer/tools.rsp ToolsAndFrameworks /opt/endeca/ToolsAndFrameworks"
+    su developer -c  "/tmp/cd/Disk1/install/runInstaller.sh -ignoreSysPrereqs -silent -waitforcompletion -responseFile /installer/tools.rsp ORACLE_HOME_NAME=ToolsAndFrameworks ORACLE_HOME=/opt/endeca/ToolsAndFrameworks PASSWORD_VALIDATION=admin"
     source /home/developer/oraInventory/orainstRoot.sh
     rm -f $MDEX_INSTALLER_FILE
     rm -f $PLATFORM_INSTALLER_FILE
     rm -rf /tmp/cd/
-    echo "USER_INSTALL_DIR=/opt" > /tmp/cas_silent.txt
-    echo "CHOSEN_FEATURE_LIST=CAS,Console,DT" >> /tmp/cas_silent.txt
-    echo "CHOSEN_INSTALL_FEATURE_LIST=CAS,Console,DT" >> /tmp/cas_silent.txt
-    echo "CHOSEN_INSTALL_SET=Custom" >> /tmp/cas_silent.txt
-    echo "CASPORT=8500" >> /tmp/cas_silent.txt
-    echo "CASSTOPPORT=8506" >> /tmp/cas_silent.txt
-    echo "ENDECA_TOOLS_ROOT=/opt/endeca/ToolsAndFrameworks/11.1.0" >> /tmp/cas_silent.txt
-    echo "ENDECA_TOOLS_CONF=/opt/endeca/ToolsAndFrameworks/11.1.0/server/workspace" >> /tmp/cas_silent.txt
-    echo "-fileOverwrite_/opt/endeca/CAS/11.1.0/uninstall/CAS11.1.0_uninstall/Uninstall Oracle Commerce Content Acquisition System 11.1.0.lax=Yes" >> /tmp/cas_silent.txt
-    echo "-fileOverwrite_/opt/endeca/ToolsAndFrameworks/11.1.0/server/workspace/conf/Standalone/localhost/casconsole.xml=Yes" >> /tmp/cas_silent.txt
-    echo "-fileOverwrite_/opt/endeca/ToolsAndFrameworks/11.1.0/server/webapps/casconsole-11.1.0-ssl.war=Yes" >> /tmp/cas_silent.txt
-    echo "-fileOverwrite_/opt/endeca/ToolsAndFrameworks/11.1.0/server/webapps/casconsole-11.1.0.war=Yes" >> /tmp/cas_silent.txt
-    echo "-fileOverwrite_/opt/endeca/ToolsAndFrameworks/11.1.0/server/workspace/conf/casconsole.properties=Yes" >> /tmp/cas_silent.txt
-    $CAS_INSTALLER_FILE -i silent -f /tmp/cas_silent.txt
+    $CAS_INSTALLER_FILE --silent --target /opt < /tmp/cas_silent.txt
     chown -R developer:developer /opt/endeca
     chmod -R -t /opt/endeca
 	sed -i "s/com.endeca.itl.cas.server.host=$(hostname)/com.endeca.itl.cas.server.host=localhost/g" /opt/endeca/CAS/workspace/conf/commandline.properties
@@ -62,6 +49,7 @@ else
 fi
 
 ENDECA_ROOT=/opt/endeca/PlatformServices/11.1.0 ; export ENDECA_ROOT
+ENDECA_CONF=/opt/endeca/PlatformServices/workspace ; export ENDECA_CONF
 ENDECA_TOOLS_ROOT=/opt/endeca/ToolsAndFrameworks/11.1.0 ; export ENDECA_TOOLS_ROOT
 ENDECA_TOOLS_CONF=$ENDECA_TOOLS_ROOT/server/workspace ; export ENDECA_TOOLS_CONF
 
