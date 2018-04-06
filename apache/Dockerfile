@@ -6,7 +6,8 @@ ENV APACHE_HOME=/usr/local/apache2 APACHE_CONFDIR=/usr/local/apache2/conf
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get -q update && \
-    apt-get install -y wget apache2 libapache2-mod-jk libapache2-mod-fcgid imagemagick libjpeg9 && \
+    apt-get -y purge apache2* && \
+    apt-get -y install wget apache2 libapache2-mod-jk libapache2-mod-fcgid imagemagick libjpeg9 && \
     wget -O /tmp/mod-pagespeed.deb "https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb" && \
     dpkg -i /tmp/mod-pagespeed.deb && \
     mkdir -p $APACHE_HOME && \
