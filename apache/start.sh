@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+APACHE_HOME=/usr/lib/apache2 ; export APACHE_HOME
+APACHE_CONFDIR=$APACHE_HOME/conf ; export APACHE_CONFDIR
+
 if [ "`ls -A $APACHE_HOME`" = "" ]; then
     ln -s /usr/lib/apache2/modules $APACHE_HOME/modules
     cp -R /etc/apache2 $APACHE_HOME/conf
