@@ -1,15 +1,13 @@
 FROM josedeng/ubuntu:ubuntu-16.04
 
-ENV JAVA_HOME /opt/jdk1.8.0_162
-ENV JDK_HOME=$JAVA_HOME PATH=$PATH:$JAVA_HOME/bin LANG=C.UTF-8
+ADD . /
+ENV JAVA_HOME=/opt/jdk1.7.0_80 JDK_HOME=/opt/jdk1.7.0_80 PATH=$PATH:/opt/jdk1.7.0_80/bin LANG=C.UTF-8
 
 RUN apt-get -q update && \
     apt-get -q -y install wget && \
     wget -q -O /tmp/jdk.tar.gz \
-         --no-check-certificate \
-         --no-cookies \
-         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jdk-8u162-linux-x64.tar.gz && \
+         --load-cookies /cookies \
+         http://download.oracle.com/otn/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz && \
     mkdir -p $JAVA_HOME && \
     tar -xzf /tmp/jdk.tar.gz --strip-components=1 -C $JAVA_HOME && \
     chown -R developer:developer $JAVA_HOME && \
