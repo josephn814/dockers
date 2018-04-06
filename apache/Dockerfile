@@ -10,7 +10,7 @@ RUN dos2unix /start.sh && \
     wget -O /tmp/mod-pagespeed.deb "https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb" && \
     dpkg -i /tmp/mod-pagespeed.deb && \
     mkdir -p $APACHE_HOME && \
-    ln -s /usr/lib/apache2/modules $APACHE_HOME/modules
+    ln -s /usr/lib/apache2/modules $APACHE_HOME/modules && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
