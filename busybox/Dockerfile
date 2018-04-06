@@ -7,7 +7,7 @@ COPY . /
 RUN dos2unix /chown.sh && \
     chmod a+x /chown.sh && \
     apt-get -q update && \
-    apt-get -q -y install wget git iputils-ping net-tools elvis-tiny curl libaio1 unzip && \
+    apt-get -q -y install wget git iputils-ping net-tools vim curl libaio1 unzip && \
     wget --load-cookies /cookies \
          -O /tmp/installer1.zip \
          "http://download.oracle.com/otn/linux/instantclient/122010/instantclient-basic-linux.x64-12.2.0.1.0.zip" && \
