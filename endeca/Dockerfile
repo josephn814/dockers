@@ -11,10 +11,10 @@ RUN dos2unix /tmp/wget.sh && \
     apt-get update && \
     apt-get install -y wget unzip libaio1 && \
     source /tmp/wget.sh && \
-    mv /tmp/V45999-01.zip /installer/platform.zip && \
-    mv /tmp/V46002-01.zip /installer/mdex.zip && \
-    mv /tmp/V46389-01.zip /installer/tools.zip && \
-    mv /tmp/V46393-01.zip /installer/cas.zip && \
+    mv /tmp/V78226-01.zip /installer/platform.zip && \
+    mv /tmp/V78211-01.zip /installer/mdex.zip && \
+    mv /tmp/V78229-01.zip /installer/tools.zip && \
+    mv /tmp/V78204-01.zip /installer/cas.zip && \
     chmod a+x -R /installer && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
