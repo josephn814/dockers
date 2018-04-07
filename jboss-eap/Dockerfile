@@ -2,7 +2,7 @@ FROM josedeng/jdk:jdk-1.8.0_162
 
 ADD start.sh /start.sh
 
-ENV JBOSS_HOME /opt/jboss-eap-6.1
+ENV JBOSS_HOME /opt/jboss-eap-6.4
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
@@ -13,7 +13,7 @@ RUN dos2unix /start.sh && \
     wget --user-agent="Mozilla/5.0" \
         --no-check-certificate \
         --no-cookies \
-        "https://access.cdn.redhat.com/content/origin/files/sha256/16/16ea1e0cef29e94c0d795bbc4b4c431dcb14c4d10831dce5ff48194ff4fb2aee/jboss-eap-6.1.0.zip?_auth_=1522740819_9ebfd65403b45bdcbfd364cd89098dc6" \
+        "https://access.cdn.redhat.com/content/origin/files/sha256/27/27a6fd62a8bc4f660970ab282a4bc013934275e47a850a974db6c7d2c62cc50e/jboss-eap-6.4.0.zip?_auth_=1523092178_87db09cbd4dcf686ca47268dbec51631" \
         -O /installer/jboss-eap.zip && \
     mkdir -p $JBOSS_HOME && \
     chown -R developer:developer /installer && \
