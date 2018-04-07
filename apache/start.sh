@@ -16,7 +16,7 @@ fi
 
 
 shutdown(){
-    sudo apachectl stop
+    apachectl stop
 	END=1
 }
 
@@ -24,7 +24,7 @@ case "$1" in
     '')
         trap 'shutdown' INT TERM
         echo "Container Started."
-        sudo apachectl start
+        apachectl start
 
         while [ "$END" == '' ]; do
 		sleep 1
