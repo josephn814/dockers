@@ -29,11 +29,10 @@ RUN dos2unix /chown.sh && \
     mkdir -p /usr/local/apache2 && \
     ln -s /usr/lib/apache2/modules /usr/local/apache2/modules && \
     ln -s /etc/apache2 /usr/local/apache2/conf && \
+    sed -i 's/^Defaults.*env_reset/Defaults        !env_reset/g' /etc/sudoers  && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
-
-ENV ROOT_HOME=/usr/local/apache2 APACHE_CONFDIR=/usr/local/apache2/conf
 
 USER developer
 

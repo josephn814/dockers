@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+ROOT_HOME=/usr/local/apache2
+APACHE_CONFDIR=$ROOT_HOME/conf ; export APACHE_CONFDIR
+
 if [ ! -d $ROOT_HOME ]; then
    sudo mkdir -p $ROOT_HOME
 fi
