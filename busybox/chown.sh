@@ -1,10 +1,28 @@
 #!/usr/bin/env bash
 
+if [ ! -d $ROOT_HOME ]; then
+   sudo mkdir -p $ROOT_HOME
+fi
+
+if [ "`ls -A $ROOT_HOME`" = "" ]; then
+    sudo ln -s /usr/lib/apache2/modules $ROOT_HOME/modules
+    sudo cp -R /etc/apache2 $ROOT_HOME/conf
+    sudo mkdir -p $ROOT_HOME/{logs,htdocs}
+    sudo chown -R developer:developer $ROOT_HOME/conf $ROOT_HOME/logs $ROOT_HOME/htdocs
+fi
+
 DIRECTORY=/home/developer
 
 if [ "`ls -A $DIRECTORY`" = "" ]; then
     touch $DIRECTORY/.bashrc
     sudo chown -R developer:developer $DIRECTORY
+    echo "if [ -x /usr/bin/dircolors ]; then" >> $DIRECTORY/.bashrc
+    echo "test -r ~/.dircolors && eval \"\$(dircolors -b ~/.dircolors)\" || eval \"\$(dircolors -b)\"" >> $DIRECTORY/.bashrc
+    echo "alias ls='ls --color=auto'" >> $DIRECTORY/.bashrc
+    echo "alias grep='grep --color=auto'" >> $DIRECTORY/.bashrc
+    echo "alias fgrep='fgrep --color=auto'" >> $DIRECTORY/.bashrc
+    echo "alias egrep='egrep --color=auto'" >> $DIRECTORY/.bashrc
+    echo "fi" >> $DIRECTORY/.bashrc
     echo "alias ll='ls -alF'" >> $DIRECTORY/.bashrc
     echo "alias la='ls -A'" >> $DIRECTORY/.bashrc
     echo "alias l='ls -CF'" >> $DIRECTORY/.bashrc
