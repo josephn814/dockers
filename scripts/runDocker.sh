@@ -2,6 +2,11 @@
 
 source $PWD/env.ini
 
+if [ "x$NETWORK" = "x" ]; then
+    echo "Missing docker user-defined network property."
+    exit -1
+fi
+
 if [ "x$WORKSPACES" = "x" ]; then
     echo "Missing WORKSPACES property."
     exit -1
@@ -14,7 +19,7 @@ fi
 case $1 in
     '')
         echo "Please enter the mode. Such as:"
-        echo "env0-env999 , for running env environment"
+        echo "env , for running env environment"
         echo "ide , for running IDE environment"
         echo "ide -debug, for debugging running."
         ;;
@@ -51,10 +56,10 @@ case $1 in
                 done
                 echo "Creating $DOCKER_ALIAS container."
                 echo "*********************************"
-                echo "docker run --name $DOCKER_ALIAS -h $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS"
+                echo "docker run --network $NETWORK --name $DOCKER_ALIAS -h $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS"
                 echo "*********************************"
                 echo
-                nohup docker run --name $DOCKER_ALIAS -h $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS >> $PWD/${DOCKER_ALIAS}.out 2>&1 &
+                nohup docker run --network $NETWORK --name $DOCKER_ALIAS -h $DOCKER_ALIAS $DOCKER_COMMANDS $DOCKER_IMAGE $DOCKER_EXTEND_COMMANDS >> $PWD/${DOCKER_ALIAS}.out 2>&1 &
             fi
         done
 
@@ -106,38 +111,6 @@ case $1 in
             done
         fi
 
-        _LINKS="${_PREFIX^^}_LINKS"
-        if [ "x${!_LINKS}" != "x" ]; then
-            for _link in ${!_LINKS} ; do
-                if [ -n $PREFIX ]; then
-                    _link="${PREFIX}-${_link}"
-                fi
-                LINK="$LINK --link $_link"
-            done
-        fi
-
-        _EXPOSES="${_PREFIX^^}_EXPOSES"
-        if [ "x${!_EXPOSES}" != "x" ]; then
-            for _expose in ${!_EXPOSES} ; do
-                EXPOSE="$EXPOSE --expose $_expose"
-            done
-        fi
-
-        _MOUNTS="${_PREFIX^^}_MOUNTS"
-        if [ "x${!_MOUNTS}" != "x" ]; then
-            for _mount in ${!_MOUNTS} ; do
-                MOUNT="$MOUNT -v $_mount"
-            done
-        fi
-
-        _ALIAS="${_PREFIX^^}_ALIAS"
-        if [ "x${!_ALIAS}" != "x" ]; then
-            if [ -n $PREFIX ]; then
-                _ALIAS="${PREFIX}-${!_ALIAS}"
-            fi
-            ALIAS="--name ${_ALIAS}"
-        fi
-
         _COMMANDS="${_PREFIX^^}_COMMANDS"
         _EXTEND_COMMANDS="${_PREFIX^^}_EXTEND_COMMANDS"
 
@@ -147,7 +120,7 @@ case $1 in
             _EXTEND_COMMANDS="${!_EXTEND_COMMANDS}"
         fi
 
-        _FINAL_COMMANDS="run --rm ${!_COMMANDS} \
+        _FINAL_COMMANDS="run --network $NETWORK --rm ${!_COMMANDS} \
             ${VOLUMES_FROM} ${LINK} ${EXPOSE} ${MOUNT} ${ALIAS} \
             ${!_CONTAINER} ${_EXTEND_COMMANDS}"
 
