@@ -50,7 +50,7 @@ case $1 in
                    DOCKER_ALIAS="${PREFIX}-${_INPUT}-${DOCKER_ALIAS}"
                 fi
                 echo " " > $PWD/${DOCKER_ALIAS}.out
-                while [ "x$(docker ps -a | grep "$DOCKER_ALIAS")" != "x" ]; do
+                while [ "x$(docker ps -a | grep \"$DOCKER_ALIAS\")" != "x" ]; do
                     docker stop $DOCKER_ALIAS > /dev/null 2>&1
                     docker rm -v $DOCKER_ALIAS > /dev/null 2>&1
                 done
@@ -110,6 +110,7 @@ case $1 in
                 VOLUMES_FROM="$VOLUMES_FROM --volumes-from $_volumes_from"
             done
         fi
+        DOCKER_ALIAS="${PREFIX}-${_PREFIX}"
 
         _COMMANDS="${_PREFIX^^}_COMMANDS"
         _EXTEND_COMMANDS="${_PREFIX^^}_EXTEND_COMMANDS"
@@ -120,15 +121,8 @@ case $1 in
             _EXTEND_COMMANDS="${!_EXTEND_COMMANDS}"
         fi
 
-        _FINAL_COMMANDS="run --network $NETWORK --rm ${!_COMMANDS} \
-            ${VOLUMES_FROM} ${LINK} ${EXPOSE} ${MOUNT} ${ALIAS} \
-            ${!_CONTAINER} ${_EXTEND_COMMANDS}"
+        _FINAL_COMMANDS="run --network $NETWORK --name $DOCKER_ALIAS -h $DOCKER_ALIAS --rm ${!_COMMANDS} ${VOLUMES_FROM} ${!_CONTAINER} ${_EXTEND_COMMANDS}"
 
-        if [ "$3" = "-debug" ]; then
-            echo "Running : "
-            echo "${_FINAL_COMMANDS}"
-            echo
-        fi
         echo "Excuting following command: $_FINAL_COMMANDS"
         docker ${_FINAL_COMMANDS}
         ;;
