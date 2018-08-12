@@ -10,7 +10,7 @@ RUN dos2unix /start.sh && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
     mv /idea-3.1.jar /opt/ide/bin && \
-    sed -i '/# Run the IDE./a VM_OPTIONS="$VM_OPTIONS -javaagent:/opt/ide/bin/idea-3.1.jar"' idea.sh && \
+    sed -i '/# Run the IDE./a VM_OPTIONS="$VM_OPTIONS -javaagent:/opt/ide/bin/idea-3.1.jar"' /opt/ide/bin/idea.sh && \
     apt-get dist-upgrade -y && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
