@@ -9,8 +9,6 @@ RUN dos2unix /start.sh && \
     wget -q https://download.jetbrains.com/idea/ideaIU-2018.2.1.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
-    mv /idea-3.1.jar /opt/ide/bin && \
-    sed -i '/# Run the IDE./a VM_OPTIONS="$VM_OPTIONS -javaagent:/opt/ide/bin/idea-3.1.jar"' /opt/ide/bin/idea.sh && \
     apt-get dist-upgrade -y && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
