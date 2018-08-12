@@ -6,9 +6,11 @@ RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get update && \
     apt-get install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 git subversion mercurial wget && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-2018.2.tar.gz -O /tmp/ide.tar.gz && \
+    wget -q https://download.jetbrains.com/idea/ideaIU-2018.2.1.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
+    mv /idea-3.1.jar /opt/ide/bin && \
+    sed -i '/# Run the IDE./a VM_OPTIONS="$VM_OPTIONS -javaagent:/opt/ide/bin/idea-3.1.jar"' idea.sh && \
     apt-get dist-upgrade -y && \
     apt-get clean && \
     apt-get autoremove wget --purge -y && \
