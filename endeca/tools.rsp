@@ -203,9 +203,9 @@ NEXT_SESSION_RESPONSE=<Value Unspecified>
 #Name       : DEINSTALL_LIST
 #Datatype   : StringList
 #Description: List of components to be deinstalled during a deinstall session.
-#Example: DEINSTALL_LIST = {"oracle.endeca.guidedsearch","11.2.0.0.0"}
+#Example: DEINSTALL_LIST = {"oracle.endeca.commerce","11.3.0.0.0"}
 #-------------------------------------------------------------------------------
-DEINSTALL_LIST={"oracle.endeca.guidedsearch","11.2.0.0.0"}
+DEINSTALL_LIST={"oracle.endeca.commerce","11.3.0.0.0"}
 
 #-------------------------------------------------------------------------------
 #Name       : SHOW_DEINSTALL_CONFIRMATION
@@ -312,9 +312,9 @@ DONT_PROXY_FOR=<Value Unspecified>
 #Name       : TOPLEVEL_COMPONENT
 #Datatype   : StringList
 #Description: The top level component to be installed in the current session.
-#Example: TOPLEVEL_COMPONENT = {"oracle.endeca.guidedsearch","11.2.0.0.0"}
+#Example: TOPLEVEL_COMPONENT = {"oracle.endeca.commerce","11.3.0.0.0"}
 #-------------------------------------------------------------------------------
-TOPLEVEL_COMPONENT={"oracle.endeca.guidedsearch","11.2.0.0.0"}
+TOPLEVEL_COMPONENT={"oracle.endeca.commerce","11.3.0.0.0"}
 
 #-------------------------------------------------------------------------------
 #Name       : SHOW_SPLASH_SCREEN
@@ -328,7 +328,7 @@ SHOW_SPLASH_SCREEN=true
 #Name       : SELECTED_LANGUAGES
 #Datatype   : StringList
 #Description: Languages in which the components will be installed.
-#Component  : oracle.endeca.guidedsearch
+#Component  : oracle.endeca.commerce
 #-------------------------------------------------------------------------------
 
 SELECTED_LANGUAGES={"en"}
@@ -337,7 +337,7 @@ SELECTED_LANGUAGES={"en"}
 #Name       : COMPONENT_LANGUAGES
 #Datatype   : StringList
 #Description: Languages supported by this component.List of supported languages : {"en"}
-#Component  : oracle.endeca.guidedsearch
+#Component  : oracle.endeca.commerce
 #-------------------------------------------------------------------------------
 
 COMPONENT_LANGUAGES={"en"}
@@ -346,7 +346,7 @@ COMPONENT_LANGUAGES={"en"}
 #Name       : INSTALL_TYPE
 #Datatype   : String
 #Description: Installation type of the component.
-#Component  : oracle.endeca.guidedsearch
+#Component  : oracle.endeca.commerce
 #-------------------------------------------------------------------------------
 
 INSTALL_TYPE="Complete Installation"
