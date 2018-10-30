@@ -13,7 +13,7 @@ RUN dos2unix /start.sh && \
     wget --user-agent="Mozilla/5.0" \
         --no-check-certificate \
         --no-cookies \
-        "https://access.cdn.redhat.com/content/origin/files/sha256/7c/7c28c74e475a296b6e3370b5eb2e21f158c31f4b50d56dafadada6483b23340e/jboss-eap-7.0.0.zip?_auth_=1540870681_a968fac60c1f20bcd2f6a75ac6b74be7#fndtn-rhel" \
+        "https://access.cdn.redhat.com/content/origin/files/sha256/7c/7c28c74e475a296b6e3370b5eb2e21f158c31f4b50d56dafadada6483b23340e/jboss-eap-7.0.0.zip?_auth_=1540880542_f2152ef62eb30c850f0c5abdf4d6f13a#fndtn-rhel" \
         -O /installer/jboss-eap.zip && \
     mkdir -p $JBOSS_HOME && \
     chown -R developer:developer /installer && \
