@@ -1,19 +1,19 @@
-FROM josedeng/jdk:jdk-1.8.0_162
+FROM josedeng/ubuntu:ubuntu-16.04
 
 ADD start.sh /start.sh
 
-ENV JBOSS_HOME /opt/jboss-eap-6.4
+ENV JBOSS_HOME /opt/jboss-eap-7.0
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt-get update && \
-    apt-get install wget unzip -y && \
+    apt-get install wget unzip openjdk-8-jdk -y && \
     mkdir -p /installer && \
     cd /tmp && \
     wget --user-agent="Mozilla/5.0" \
         --no-check-certificate \
         --no-cookies \
-        "https://access.cdn.redhat.com/content/origin/files/sha256/27/27a6fd62a8bc4f660970ab282a4bc013934275e47a850a974db6c7d2c62cc50e/jboss-eap-6.4.0.zip?_auth_=1523092178_87db09cbd4dcf686ca47268dbec51631" \
+        "https://access.cdn.redhat.com/content/origin/files/sha256/7c/7c28c74e475a296b6e3370b5eb2e21f158c31f4b50d56dafadada6483b23340e/jboss-eap-7.0.0.zip?_auth_=1540870681_a968fac60c1f20bcd2f6a75ac6b74be7#fndtn-rhel" \
         -O /installer/jboss-eap.zip && \
     mkdir -p $JBOSS_HOME && \
     chown -R developer:developer /installer && \

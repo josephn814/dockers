@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 if [ "x$JAVA_HOME" = "x" ]; then
-    JAVA_HOME=/opt/jdk1.8.0_162
+    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 fi
 export JAVA_HOME
-JBOSS_HOME=/opt/jboss-eap-6.4 ; export JBOSS_HOME
+JBOSS_HOME=/opt/jboss-eap-7.0 ; export JBOSS_HOME
 PATH=$JAVA_HOME/bin:$JBOSS_HOME/bin:$PATH ; export PATH
 
 if [ "`ls -A $JBOSS_HOME`" = "" ]; then
