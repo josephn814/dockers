@@ -7,4 +7,4 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
 fi
 
 export SVGA_VGPU10=0
-/opt/jprofiler/bin/jprofiler.sh
+/opt/jprofiler/bin/jprofiler
