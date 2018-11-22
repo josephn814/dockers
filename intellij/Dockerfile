@@ -4,14 +4,14 @@ COPY . /
 
 RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
-    apt-get update && \
-    apt-get install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 git subversion mercurial wget && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-2018.2.6.tar.gz -O /tmp/ide.tar.gz && \
+    apt update && \
+    apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 git subversion mercurial wget firefox && \
+    wget -q https://download.jetbrains.com/idea/ideaIU-2018.3.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
-    apt-get dist-upgrade -y && \
-    apt-get clean && \
-    apt-get autoremove wget --purge -y && \
+    apt dist-upgrade -y && \
+    apt clean && \
+    apt autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
