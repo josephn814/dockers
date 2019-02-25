@@ -203,9 +203,9 @@ NEXT_SESSION_RESPONSE=<Value Unspecified>
 #Name       : DEINSTALL_LIST
 #Datatype   : StringList
 #Description: List of components to be deinstalled during a deinstall session.
-#Example: DEINSTALL_LIST = {"oracle.endeca.commerce","11.3.0.0.0"}
+#Example: DEINSTALL_LIST = {"oracle.endeca.commerce","11.3.1.5.0"}
 #-------------------------------------------------------------------------------
-DEINSTALL_LIST={"oracle.endeca.commerce","11.3.0.0.0"}
+DEINSTALL_LIST={"oracle.endeca.commerce","11.3.1.5.0"}
 
 #-------------------------------------------------------------------------------
 #Name       : SHOW_DEINSTALL_CONFIRMATION
@@ -312,9 +312,9 @@ DONT_PROXY_FOR=<Value Unspecified>
 #Name       : TOPLEVEL_COMPONENT
 #Datatype   : StringList
 #Description: The top level component to be installed in the current session.
-#Example: TOPLEVEL_COMPONENT = {"oracle.endeca.commerce","11.3.1.0.0"}
+#Example: TOPLEVEL_COMPONENT = {"oracle.endeca.commerce","11.3.1.5.0"}
 #-------------------------------------------------------------------------------
-TOPLEVEL_COMPONENT={"oracle.endeca.commerce","11.3.1.0.0"}
+TOPLEVEL_COMPONENT={"oracle.endeca.commerce","11.3.1.5.0"}
 
 #-------------------------------------------------------------------------------
 #Name       : SHOW_SPLASH_SCREEN
