@@ -17,10 +17,10 @@ WGET=/usr/bin/wget
 COOKIE_FILE=/tmp/$$.cookies
 
 # Log directory and file
-LOGDIR=.
+LOGDIR=/tmp
 LOGFILE=$LOGDIR/wgetlog-`date +%m-%d-%y-%H:%M`.log
 # Output directory and file
-OUTPUT_DIR=.
+OUTPUT_DIR=/tmp
 #
 # End of user configurable variable
 #
