@@ -17,10 +17,10 @@ WGET=/usr/bin/wget
 COOKIE_FILE=/tmp/$$.cookies
 
 # Log directory and file
-LOGDIR=.
+LOGDIR=/tmp
 LOGFILE=$LOGDIR/wgetlog-`date +%m-%d-%y-%H:%M`.log
 # Output directory and file
-OUTPUT_DIR=.
+OUTPUT_DIR=/tmp
 #
 # End of user configurable variable
 #
@@ -48,7 +48,7 @@ $WGET --user-agent="Mozilla/5.0" --secure-protocol=auto --post-data $AUTH_DATA -
 rm -f sso.out
 
 
-$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980662-01.zip&token=bXFKS1hWSGlTNGJFVFFTc1FKMHlDZyE6OiFmaWxlSWQ9MTAyNjU2NzE2JmZpbGVTZXRDaWQ9ODkwNjE1JnJlbGVhc2VDaWRzPTgzMjU3NCZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980662-01.zip>> $LOGFILE 2>&1 
+$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980662-01.zip&token=bXFKS1hWSGlTNGJFVFFTc1FKMHlDZyE6OiFmaWxlSWQ9MTAyNjU2NzE2JmZpbGVTZXRDaWQ9ODkwNjE1JnJlbGVhc2VDaWRzPTgzMjU3NCZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980662-01.zip 
 
-$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980682-01.zip&token=aTdDTFEvZyswNlRIK2VSZHQvTmc4USE6OiFmaWxlSWQ9MTAyNjU2OTc3JmZpbGVTZXRDaWQ9ODkwNjE4JnJlbGVhc2VDaWRzPTgzMjU5MSZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980682-01.zip>> $LOGFILE 2>&1 
+$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980682-01.zip&token=aTdDTFEvZyswNlRIK2VSZHQvTmc4USE6OiFmaWxlSWQ9MTAyNjU2OTc3JmZpbGVTZXRDaWQ9ODkwNjE4JnJlbGVhc2VDaWRzPTgzMjU5MSZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980682-01.zip 
 

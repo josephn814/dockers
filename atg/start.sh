@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-JAVA_HOME=/opt/jdk1.7.0_80 ; export JAVA_HOME
-JAVA_VM=$JAVA_HOME/bin/java ; export JAVA_VM
 DYNAMO_HOME=/opt/ATG/home ; export DYNAMO_HOME
-CLASSPATH=.:$JAVA_HOME/lib ; export CLASSPATH
 
 DIRECTORY=/opt/ATG
 PLATFORM_INSTALLER_FILE=/installer/OCPlatform11_3_1.bin
@@ -19,6 +16,7 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     $PLATFORM_INSTALLER_FILE -i silent -f /installer/installer.properties
     $ACC_INSTALLER_FILE -i silent -f /installer/installer.properties
     sed -i '/-Djava.naming.factory.url.pkgs=atg.jndi.url/ a\           -Datg.dynamoclientlauncher.allowremote=true \\' /opt/ATG/home/bin/startACC
+    chown -R developer:developer $DIRECTORY
     chmod -R -t $DIRECTORY
 else
     echo "ATG has been installed."
