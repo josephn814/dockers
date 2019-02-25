@@ -1,13 +1,13 @@
 #!/bin/sh
 
 #
-# Generated onThu Jul 20 16:49:15 PDT 2017# Start of user configurable variables
+# Generated onSun Feb 24 17:42:30 PST 2019# Start of user configurable variables
 #
 LANG=C
 export LANG
 
 # SSO username and password
-SSO_USERNAME=josephn814@foxmail.com
+SSO_USERNAME=jclark@foxmail.com
 SSO_PASSWORD=112233qq
 
 
@@ -31,8 +31,7 @@ then
  exit
 fi
 
-# Contact osdc site so that we can get SSO Params for logging in
-SSO_RESPONSE=`$WGET --user-agent="Mozilla/5.0" --no-check-certificate https://edelivery.oracle.com/osdc/faces/SearchSoftware 2>&1|grep Location`
+SSO_RESPONSE=`$WGET --user-agent="Mozilla/5.0"  --no-check-certificate https://edelivery.oracle.com/osdc/faces/SoftwareDelivery -O- 2>&1|grep Location`
 
 # Extract request parameters for SSO
 SSO_TOKEN=`echo $SSO_RESPONSE| cut -d '=' -f 2|cut -d ' ' -f 1`
@@ -49,11 +48,7 @@ $WGET --user-agent="Mozilla/5.0" --secure-protocol=auto --post-data $AUTH_DATA -
 rm -f sso.out
 
 
+$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980662-01.zip&token=bXFKS1hWSGlTNGJFVFFTc1FKMHlDZyE6OiFmaWxlSWQ9MTAyNjU2NzE2JmZpbGVTZXRDaWQ9ODkwNjE1JnJlbGVhc2VDaWRzPTgzMjU3NCZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980662-01.zip>> $LOGFILE 2>&1 
 
-
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V861194-01.zip&token=ZHBWOFVvK1hSTXhyM244Ymp6UlVldyE6OiF1c2VybmFtZT1FUEQtSk9TRVBITjgxNEBGT1hNQUlMLkNPTSZ1c2VySWQ9NTM0OTA4NCZjYWxsZXI9U2VhcmNoU29mdHdhcmUmY291bnRyeUlkPUNOJmVtYWlsQWRkcmVzcz1qb3NlcGhuODE0QGZveG1haWwuY29tJmZpbGVJZD05NDIwMDk0NCZhcnU9MjEyMDgxNzMmYWdyZWVtZW50SWQ9MzQ2MTQ5OSZzb2Z0d2FyZUNpZHM9MTAxODMyJnBsYXRmb3JtQ2lkcz0zNSZwcm9maWxlSW5zdGFuY2VDaWQ9NzgzMjc0JmRvd25sb2FkU291cmNlPXdnZXQmcHJvZmlsZUluc3RhbmNlTmFtZT1PcmFjbGUgQVRHIFdlYiBDb21tZXJjZSAxMS4zLjAuMC4wIGZvciBMaW51eCB4ODYtNjQmcGxhdGZvcm1OYW1lPUxpbnV4IHg4Ni02NCZtZWRpYUNpZD03Nzk4NDMmcmVsZWFzZUNpZD0maXNSZWxlYXNlU2VhcmNoPWZhbHNl" -O $OUTPUT_DIR/V861194-01.zip >> $LOGFILE 2>&1 
-
-
-
-  $WGET  --user-agent="Mozilla/5.0" --no-check-certificate --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/download?fileName=V861209-01.zip&token=TFJHTVJDWUJ2Nlhtb3hIcjVraTljQSE6OiF1c2VybmFtZT1FUEQtSk9TRVBITjgxNEBGT1hNQUlMLkNPTSZ1c2VySWQ9NTM0OTA4NCZjYWxsZXI9U2VhcmNoU29mdHdhcmUmY291bnRyeUlkPUNOJmVtYWlsQWRkcmVzcz1qb3NlcGhuODE0QGZveG1haWwuY29tJmZpbGVJZD05NDIwMTQ4NyZhcnU9MjEyMDgyODAmYWdyZWVtZW50SWQ9MzQ2MTQ5OSZzb2Z0d2FyZUNpZHM9MTAxODMyJnBsYXRmb3JtQ2lkcz0zNSZwcm9maWxlSW5zdGFuY2VDaWQ9NzgzMjc0JmRvd25sb2FkU291cmNlPXdnZXQmcHJvZmlsZUluc3RhbmNlTmFtZT1PcmFjbGUgQVRHIFdlYiBDb21tZXJjZSAxMS4zLjAuMC4wIGZvciBMaW51eCB4ODYtNjQmcGxhdGZvcm1OYW1lPUxpbnV4IHg4Ni02NCZtZWRpYUNpZD03Nzk4ODQmcmVsZWFzZUNpZD0maXNSZWxlYXNlU2VhcmNoPWZhbHNl" -O $OUTPUT_DIR/V861209-01.zip >> $LOGFILE 2>&1 
+$WGET --user-agent="Mozilla/5.0"  --no-check-certificate  --load-cookies=$COOKIE_FILE --save-cookies=$COOKIE_FILE --keep-session-cookies "https://edelivery.oracle.com/osdc/softwareDownload?fileName=V980682-01.zip&token=aTdDTFEvZyswNlRIK2VSZHQvTmc4USE6OiFmaWxlSWQ9MTAyNjU2OTc3JmZpbGVTZXRDaWQ9ODkwNjE4JnJlbGVhc2VDaWRzPTgzMjU5MSZwbGF0Zm9ybUNpZHM9MzUmZG93bmxvYWRUeXBlPTk1NzY0JmFncmVlbWVudElkPTUyNTAzODUmZW1haWxBZGRyZXNzPWpjbGFya0Bmb3htYWlsLmNvbSZ1c2VyTmFtZT1FUEQtSkNMQVJLQEZPWE1BSUwuQ09NJmlwQWRkcmVzcz0xODIuMTUwLjI0LjcxJnVzZXJBZ2VudD1Nb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS83Mi4wLjM2MjYuMTE5IFNhZmFyaS81MzcuMzYmY291bnRyeUNvZGU9Q04mZGxwQ2lkcz04OTA4MzI" -O $OUTPUT_DIR/V980682-01.zip>> $LOGFILE 2>&1 
 
