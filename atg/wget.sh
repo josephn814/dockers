@@ -8,7 +8,7 @@ export LANG
 
 # SSO username and password
 SSO_USERNAME=jclark@foxmail.com
-SSO_PASSWORD=112233qq
+SSO_PASSWORD=123abcABC
 
 
 # Path to wget command
