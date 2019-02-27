@@ -6,7 +6,7 @@ RUN dos2unix /start.sh && \
     chmod a+x /start.sh && \
     apt update && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 git subversion mercurial wget firefox && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-2018.3.4.tar.gz -O /tmp/ide.tar.gz && \
+    wget -q https://download.jetbrains.com/idea/ideaIU-2018.3.5.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
     apt dist-upgrade -y && \
