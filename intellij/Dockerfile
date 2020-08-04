@@ -8,7 +8,7 @@ RUN dos2unix /start.sh && \
     apt upgrade -y && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 \
                    libnss3 libx11-xcb1 libxcb-dri3-0 libdrm-dev libgbm1 libxss1 libatk-bridge2.0-0 libdbusmenu-glib4 \
-                   git subversion mercurial wget net-tools iputils-ping && \
+                   vim git subversion mercurial wget net-tools iputils-ping && \
     wget -q https://download.jetbrains.com/idea/ideaIU-2020.2.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && \
     tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
