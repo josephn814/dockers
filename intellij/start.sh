@@ -7,4 +7,8 @@ if [ "`ls -A $DIRECTORY`" = "" ]; then
     sudo chown -R developer:developer $DIRECTORY
 fi
 
+if [ ! -r $DIRECTORY ] || [ ! -w $DIRECTORY ]; then
+    sudo chown -R developer:developer $DIRECTORY
+fi
+
 /opt/ide/bin/idea.sh
