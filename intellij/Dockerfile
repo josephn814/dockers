@@ -19,9 +19,9 @@ ENV PATH="${JAVA_HOME}/bin:${PATH}"
 RUN apt update && \
     apt install -y wget && \
     wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/jdk.tar.gz && \
-    mkdir -p ${JAVA_HOME} && tar -zxvf /tmp/jdk.tar.gz --strip-components=1 -C $_  && \
+    mkdir -p ${JAVA_HOME} && tar -zxvf /tmp/jdk.tar.gz --strip-components=1 -C ${JAVA_HOME}  && \
     wget --no-cookies --no-check-certificate  https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
-    mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C $_ 
+    mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C ${IDE_HOME} 
 
 FROM ubuntu:${UBUNTU_VERSION}
 
