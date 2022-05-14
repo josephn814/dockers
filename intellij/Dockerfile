@@ -7,10 +7,11 @@ FROM ubuntu:${UBUNTU_VERSION} as builder-stage
 ARG JDK_VERSION=8u321 \
     JDK_BUILD=1.8.0_321-b07 \
     JDK_HASH=df5ad55fdd604472a86a45a217032c7d \
-    JAVA_HOME=/opt/java
+    JAVA_HOME=/opt/java \
+    IDE_VERSION=2022.1.1
 
 # Setup environment variables
-ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME}
+ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME} IDE_VERSION=${IDE_VERSION}
 # Setup runtime environment variables
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
@@ -19,7 +20,7 @@ RUN apt update && \
     apt install -y wget && \
     wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/installers/jdk.tar.gz && \
     mkdir -p ${JAVA_HOME} && tar xvzf /tmp/installers/jdk.tar.gz --strip-components=1 -C $_ && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-2021.2.1.tar.gz -O /tmp/ide.tar.gz && \
+    wget -q https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p /opt/ide && tar zxvf /tmp/ide.tar.gz --strip-components=1 -C $_
 
 FROM ubuntu:${UBUNTU_VERSION}
