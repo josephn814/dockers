@@ -3,10 +3,6 @@ ARG UBUNTU_VERSION=22.04
 FROM ubuntu:${UBUNTU_VERSION} as builder-stage
 
 # Build arguments
-ARG JDK_VERSION=8u321
-ARG JDK_BUILD=1.8.0_321-b07
-ARG JDK_HASH=df5ad55fdd604472a86a45a217032c7d
-ARG JAVA_HOME=/opt/java
 ARG IDE_HOME=/opt/ide
 ARG IDE_VERSION=2022.1.1
 ARG USERNAME=developer
@@ -14,15 +10,11 @@ ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
 # Setup environment variables
-ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME} IDE_VERSION=${IDE_VERSION} IDE_HOME=${IDE_HOME}
-# Setup runtime environment variables
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
+ENV IDE_VERSION=${IDE_VERSION} IDE_HOME=${IDE_HOME}
 
 # Install packages
 RUN apt update && \
     apt install -y wget && \
-    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/jdk.tar.gz && \
-    mkdir -p ${JAVA_HOME} && tar -zxvf /tmp/jdk.tar.gz --strip-components=1 -C ${JAVA_HOME}  && \
     wget --no-cookies --no-check-certificate  https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C ${IDE_HOME} && \
     groupadd --gid ${USER_GID} ${USERNAME} && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -s /bin/bash && \
@@ -32,15 +24,9 @@ RUN apt update && \
 FROM ubuntu:${UBUNTU_VERSION}
 
 # Build arguments
-ARG JAVA_HOME=/opt/java
 ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
-
-# Setup environment variables
-ENV JAVA_HOME=${JAVA_HOME}
-# Setup runtime environment variables
-ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 RUN apt update && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 libxshmfence1 \
