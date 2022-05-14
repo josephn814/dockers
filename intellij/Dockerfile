@@ -1,24 +1,55 @@
-FROM josedeng/ubuntu:ubuntu-18.04
 
-COPY . /
+ARG UBUNTU_VERSION=22.04
 
-RUN dos2unix /start.sh && \
-    chmod a+x /start.sh && \
-    apt update && \
-    apt upgrade -y && \
+FROM ubuntu:${UBUNTU_VERSION} as builder-stage
+
+# Build arguments
+ARG JDK_VERSION=8u321 \
+    JDK_BUILD=1.8.0_321-b07 \
+    JDK_HASH=df5ad55fdd604472a86a45a217032c7d \
+    JAVA_HOME=/opt/java
+
+# Setup environment variables
+ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME}
+# Setup runtime environment variables
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+# Install packages
+RUN apt update && \
+    apt install -y wget && \
+    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/installers/jdk.tar.gz && \
+    mkdir -p ${JAVA_HOME} && tar xvzf /tmp/installers/jdk.tar.gz --strip-components=1 -C $_ && \
+    wget -q https://download.jetbrains.com/idea/ideaIU-2021.2.1.tar.gz -O /tmp/ide.tar.gz && \
+    mkdir -p /opt/ide && tar zxvf /tmp/ide.tar.gz --strip-components=1 -C $_
+
+FROM ubuntu:${UBUNTU_VERSION}
+
+# Build arguments
+ARG JAVA_HOME=/opt/java
+
+# Setup environment variables
+ENV JAVA_HOME=${JAVA_HOME}
+# Setup runtime environment variables
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+RUN apt update && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 libxshmfence1 \
                    libnss3 libx11-xcb1 libxcb-dri3-0 libdrm-dev libgbm1 libxss1 libatk-bridge2.0-0 libdbusmenu-glib4 \
                    vim git subversion mercurial wget net-tools iputils-ping inetutils-telnet language-pack-en libxkbcommon-x11-0 \
-                   libpulse0 libglu1 build-essential && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-2022.1.1.tar.gz -O /tmp/ide.tar.gz && \
-    mkdir -p /opt/ide && \
-    tar zxvf /tmp/ide.tar.gz --strip-components=1 -C /opt/ide && \
+                   libpulse0 libglu1 locales && \
+    localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     apt clean && \
     apt autoremove --purge -y && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-USER developer
-VOLUME ["/home/developer"]
+ENV LANG en_US.utf8
 
-ENTRYPOINT ["/start.sh"]
+COPY --from=builder-stage /opt /opt
+
+RUN ln -s /opt/ide/bin/idea.sh /bin/idea.sh && \
+    useradd -ms /bin/bash developer && chown -R developer:developer /opt
+
+USER developer
+
+ENTRYPOINT ["idea.sh"]
