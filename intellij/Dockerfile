@@ -1,4 +1,3 @@
-
 ARG UBUNTU_VERSION=22.04
 
 FROM ubuntu:${UBUNTU_VERSION} as builder-stage
@@ -8,20 +7,21 @@ ARG JDK_VERSION=8u321
 ARG JDK_BUILD=1.8.0_321-b07
 ARG JDK_HASH=df5ad55fdd604472a86a45a217032c7d
 ARG JAVA_HOME=/opt/java
+ARG IDE_HOME=/opt/ide
 ARG IDE_VERSION=2022.1.1
 
 # Setup environment variables
-ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME} IDE_VERSION=${IDE_VERSION}
+ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME} IDE_VERSION=${IDE_VERSION} IDE_HOME=${IDE_HOME}
 # Setup runtime environment variables
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # Install packages
 RUN apt update && \
     apt install -y wget && \
-    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/installers/jdk.tar.gz && \
-    mkdir -p ${JAVA_HOME} && tar xvzf /tmp/installers/jdk.tar.gz --strip-components=1 -C $_ && \
-    wget -q https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
-    mkdir -p /opt/ide && tar zxvf /tmp/ide.tar.gz --strip-components=1 -C $_
+    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/jdk.tar.gz && \
+    mkdir -p ${JAVA_HOME} && tar -zxvf /tmp/jdk.tar.gz --strip-components=1 -C $_  && \
+    wget --no-cookies --no-check-certificate  https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
+    mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C $_ 
 
 FROM ubuntu:${UBUNTU_VERSION}
 
