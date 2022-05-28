@@ -15,15 +15,15 @@ ENV IDE_VERSION=${IDE_VERSION} IDE_HOME=${IDE_HOME}
 # Install packages
 RUN apt update && \
     apt install -y wget && \
-    wget --no-cookies --no-check-certificate  https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
+    wget --no-cookies --no-check-certificate https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C ${IDE_HOME} && \
-    groupadd --gid ${USER_GID} ${USERNAME} && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -s /bin/bash && \
-    chown -R ${USER_UID}:${USER_GID} /opt && \
+    chown -R ${USER_UID}:${USER_GID} ${IDE_HOME} && \
     chmod +x ${IDE_HOME}/bin/idea.sh
 
 FROM ubuntu:${UBUNTU_VERSION}
 
 # Build arguments
+ARG IDE_HOME=/opt/ide
 ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
@@ -43,11 +43,11 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
-ENV LANG en_US.utf8
+ENV LANG=en_US.utf8 IDE_HOME=${IDE_HOME}
 
-COPY --from=builder-stage /opt /opt
+COPY --from=builder-stage ${IDE_HOME} ${IDE_HOME}
 
-RUN ln -s /opt/ide/bin/idea.sh /bin/idea.sh
+RUN ln -s ${IDE_HOME}/bin/idea.sh /bin/idea.sh
 
 USER ${USERNAME}
 
