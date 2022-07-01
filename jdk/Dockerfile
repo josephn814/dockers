@@ -35,6 +35,8 @@ ENV JAVA_HOME=${JAVA_HOME}
 # Setup runtime environment variables
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
+RUN groupadd --gid ${USER_GID} ${USERNAME} && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -s /bin/bash
+
 COPY --from=builder-stage ${JAVA_HOME} ${JAVA_HOME}
 
 USER ${USERNAME}
