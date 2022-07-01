@@ -13,7 +13,7 @@ ARG USER_GID=${USER_UID}
 ENV JDK_VERSION=${JDK_VERSION} JAVA_HOME=${JAVA_HOME}
 
 # Install dependencies from yum repository
-RUN yum install wget -y
+RUN apt install wget -y
 
 # Install packages
 RUN mkdir -p /tmp/installers && \
