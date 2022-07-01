@@ -18,8 +18,8 @@ RUN apt update && \
 
 # Install packages
 RUN mkdir -p /tmp/installers && \
-    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" --tries=3 https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/installers/jdk.tar.gz \
-    mkdir -p ${JAVA_HOME} && tar xvzf /tmp/installers/jdk.tar.gz --strip-components=1 -C ${JAVA_HOME} \
+    wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" --tries=3 https://javadl.oracle.com/webapps/download/GetFile/${JDK_BUILD}/${JDK_HASH}/linux-i586/jdk-${JDK_VERSION}-linux-x64.tar.gz -O /tmp/installers/jdk.tar.gz && \
+    mkdir -p ${JAVA_HOME} && tar xvzf /tmp/installers/jdk.tar.gz --strip-components=1 -C ${JAVA_HOME} && \
     chown -R ${USER_UID}:${USER_GID} ${JAVA_HOME}
 
 FROM ubuntu:${UBUNTU_VERSION}
