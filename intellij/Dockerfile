@@ -28,13 +28,13 @@ ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
-    curl -s https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
-    apt update && \
+RUN apt update && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 libxshmfence1 \
                    libnss3 libx11-xcb1 libxcb-dri3-0 libdrm-dev libgbm1 libxss1 libatk-bridge2.0-0 libdbusmenu-glib4 \
                    vim git git-lfs subversion mercurial wget net-tools iputils-ping inetutils-telnet language-pack-en libxkbcommon-x11-0 \
-                   libpulse0 libglu1 locales sudo && \
+                   libpulse0 libglu1 locales sudo curl && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    curl -s https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     groupadd --gid ${USER_GID} ${USERNAME} && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME} -s /bin/bash && \
     echo ${USERNAME} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USERNAME} && \
