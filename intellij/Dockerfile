@@ -29,6 +29,7 @@ ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    curl -s https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
     apt update && \
     apt install -y libxi6 libgtk2.0-0 libcanberra-gtk-module libxrender1 libxtst6 libxext6 libfreetype6 libxshmfence1 \
                    libnss3 libx11-xcb1 libxcb-dri3-0 libdrm-dev libgbm1 libxss1 libatk-bridge2.0-0 libdbusmenu-glib4 \
