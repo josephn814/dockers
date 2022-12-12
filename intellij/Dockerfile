@@ -18,7 +18,7 @@ COPY packages /tmp/
 # Install packages
 RUN apt update -qq && \
     apt install -qq -y wget && \
-    wget --no-cookies --no-check-certificate https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
+    wget -q --no-cookies --no-check-certificate https://download.jetbrains.com/idea/ideaIU-${IDE_VERSION}.tar.gz -O /tmp/ide.tar.gz && \
     mkdir -p ${IDE_HOME} && tar -zxvf /tmp/ide.tar.gz --strip-components=1 -C ${IDE_HOME} && \
     tar -xvzf /tmp/plugins.tar.gz -C ${IDE_HOME} && \
     chown -R ${USER_UID}:${USER_GID} ${IDE_HOME} && \
