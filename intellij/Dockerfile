@@ -4,7 +4,7 @@ FROM ubuntu:${UBUNTU_VERSION} as builder-stage
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
-ARG IDE_VERSION=2022.2.3
+ARG IDE_VERSION=2022.3
 ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
