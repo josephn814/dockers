@@ -1,12 +1,11 @@
-ARG UBUNTU_VERSION=22.04
+FROM google/cloud-sdk:alpine as static-source
 
-FROM ubuntu:${UBUNTU_VERSION} as builder-stage
+FROM ubuntu:latest as builder-stage
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
 ARG IDE_VERSION=2022.3.1
 ARG GCLI_HOME=/opt/google-cli
-ARG GCLI_VERSION=412.0.0
 ARG USERNAME=developer
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
@@ -17,6 +16,8 @@ ENV IDE_VERSION=${IDE_VERSION} IDE_HOME=${IDE_HOME}
 
 COPY packages /tmp/
 
+COPY --from=static-source /google-cloud-sdk ${GCLI_HOME}
+
 # Install packages
 RUN apt update -qq && \
     apt install -qq -y wget && \
@@ -24,9 +25,6 @@ RUN apt update -qq && \
     mkdir -p ${IDE_HOME} && \
     tar -zxf /tmp/ide.tar.gz --strip-components=1 -C ${IDE_HOME} && \
     tar -xzf /tmp/plugins.tar.gz -C ${IDE_HOME} && \
-    wget -q --no-cookies --no-check-certificate https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-${GCLI_VERSION}-linux-x86_64.tar.gz -O /tmp/google-cli.tar.gz && \
-    mkdir -p ${GCLI_HOME} && \
-    tar -zxf /tmp/google-cli.tar.gz --strip-components=1 -C ${GCLI_HOME} && \
     yes | ${GCLI_HOME}/bin/gcloud components install kubectl && \
     chown -R ${USER_UID}:${USER_GID} /opt && \
     chmod +x ${IDE_HOME}/bin/idea.sh && \
@@ -36,7 +34,7 @@ RUN apt update -qq && \
     echo "--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED" >> ${IDE_HOME}/bin/idea64.vmoptions && \
     echo "-javaagent:${IDE_HOME}/netfilter/ja-netfilter.jar=jetbrains" >> ${IDE_HOME}/bin/idea64.vmoptions
 
-FROM ubuntu:${UBUNTU_VERSION}
+FROM ubuntu:latest
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
