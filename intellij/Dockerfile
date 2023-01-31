@@ -4,7 +4,7 @@ FROM ubuntu:latest as builder-stage
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
-ARG IDE_VERSION=2022.3.1
+ARG IDE_VERSION=2022.3.2
 ARG GCLI_HOME=/opt/google-cli
 ARG USERNAME=developer
 ARG USER_UID=1000
