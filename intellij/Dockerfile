@@ -1,4 +1,4 @@
-FROM ubuntu:latest as builder-stage
+FROM ubuntu:22.10 as builder-stage
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
@@ -28,7 +28,7 @@ RUN apt update -qq && \
     echo "--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED" >> ${IDE_HOME}/bin/idea64.vmoptions && \
     echo "-javaagent:${IDE_HOME}/netfilter/ja-netfilter.jar=jetbrains" >> ${IDE_HOME}/bin/idea64.vmoptions
 
-FROM ubuntu:latest
+FROM ubuntu:22.10
 
 # Build arguments
 ARG IDE_HOME=/opt/ide
